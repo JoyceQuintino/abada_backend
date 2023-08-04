@@ -1,2 +1,2 @@
 # abada_backend
-Sistema para os jogos da abadá-capoeira 
+Sistema para os jogos cearenses 2023 da abadá-capoeira 
