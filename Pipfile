@@ -8,11 +8,11 @@ fastapi = "*"
 sqlalchemy = "*"
 asyncpg = "*"
 pandas = "*"
-sqlalchemy = "*"
-asyncpg = "*"
 uvicorn = "*"
 pytest = "*"
 psycopg2-binary = "*"
+python-dotenv = "*"
+greenlet = "*"
 
 [dev-packages]
 
