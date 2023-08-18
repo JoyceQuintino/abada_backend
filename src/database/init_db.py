@@ -1,7 +1,10 @@
 from asyncio import run
 
-from database.db_connection import engine
-from models.models import Base
+from src.database.db_connection import DBConnection
+from src.models.models import Base
+
+db_conn = DBConnection()
+engine = db_conn.get_engine()
 
 async def create_database():
     async with engine.begin() as connection:

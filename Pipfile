@@ -9,6 +9,7 @@ sqlalchemy = "*"
 asyncpg = "*"
 uvicorn = "*"
 pytest = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
