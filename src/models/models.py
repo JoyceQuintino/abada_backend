@@ -27,7 +27,7 @@ class Graduacao(Base):
 class Competidor(Base):
     __tablename__ = 'Competidor'
     id = Column('id', Integer, primary_key=True, autoincrement=True)
-    nome = Column('nome', String, nullable=True)
+    nome = Column('nome', String, nullable=False)
     apelido = Column('apelido', String, nullable=False)
     nome_estado = Column('nome_estado', String, nullable=False)
     sexo = Column('sexo', String, nullable=True)
@@ -37,12 +37,10 @@ class Competidor(Base):
 class Jogo(Base):
     __tablename__ = 'Jogo'
     id = Column('id', Integer, primary_key=True, autoincrement=True)
-    nota = Column('nota', Float, nullable=False)
-    jogo_valido = Column('jogo_valido', Integer, nullable=True)
+    jogo_valido = Column('jogo_valido', Integer, nullable=False)
     id_competidor_1 = Column('id_competidor_1', Integer, ForeignKey('Competidor.id'))
     id_competidor_2 = Column('id_competidor_2', Integer, ForeignKey('Competidor.id'))
     id_modalidade = Column('id_modalidade', Integer, ForeignKey('Modalidade.id'))
-    id_pontuacao = Column('id_pontuacao', Integer, ForeignKey('Pontuacao.id'))
 class Modalidade(Base):
     __tablename__ = 'Modalidade'
     id = Column('id', Integer, primary_key=True, autoincrement=True)
@@ -60,5 +58,6 @@ class Jurado(Base):
     __tablename__ = 'Jurado'
     id = Column('id', Integer, primary_key=True, autoincrement=True)
     nome = Column('nome', String, nullable=False)
+    apelido = Column('apelido', String, nullable=False)
 
     
