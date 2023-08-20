@@ -6,7 +6,7 @@ from src.models.models import Base
 db_conn = DBConnection()
 engine = db_conn.get_engine()
 
-def insert_data() -> pd.DataFrame:
+def convert_data() -> pd.DataFrame:
     data = pd.read_csv('database-abada.csv', sep=',')
     return data
 
@@ -20,5 +20,5 @@ async def insert_data():
         await connection.run_sync(Base.metadata.drop_all)
 
 if __name__ == '__main__':
-    #insert_data()
+    #convert_data()
     run(create_database())
