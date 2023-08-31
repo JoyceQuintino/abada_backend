@@ -27,6 +27,6 @@ class DBConnection:
         :return: engine connection database
         """
     
-        engine = create_async_engine(self.__connection_string)
-        async_session = sessionmaker(engine, class_=AsyncSession)
-        return engine
+        engine = create_async_engine(self.__connection_string, echo=True)
+        async_session = sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)
+        return async_session
