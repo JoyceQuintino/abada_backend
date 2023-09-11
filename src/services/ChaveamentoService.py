@@ -11,6 +11,8 @@ class ChaveamentoService:
         async with async_session() as session:
             result = await session.execute(select(Competidor))
             players_divided = divide_players(result.scalars().all())
-            matches = round_robin(players_divided)
+            matches = []
+            for group in players_divided:
+                matches.append(round_robin(group))
             return matches
 
