@@ -12,5 +12,5 @@ class ChaveamentoService:
             result = await session.execute(select(Competidor))
             players_divided = divide_players(result.scalars().all())
             matches = round_robin(players_divided)
-            return players_divided
+            return matches
 
