@@ -4,7 +4,7 @@ from sqlalchemy.future import select
 
 
 class CompeditorService:
-    async def get_all_competitors():
+    async def get_all_competitors(self):
         async_session = DBConnection().get_engine()
         async with async_session() as session:
             result = await session.execute(select(Competidor))
