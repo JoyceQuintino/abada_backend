@@ -7,9 +7,12 @@ name = "pypi"
 fastapi = "*"
 sqlalchemy = "*"
 asyncpg = "*"
+pandas = "*"
 uvicorn = "*"
 pytest = "*"
 psycopg2-binary = "*"
+python-dotenv = "*"
+greenlet = "*"
 
 [dev-packages]
 
