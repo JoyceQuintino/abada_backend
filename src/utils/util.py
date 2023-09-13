@@ -23,7 +23,7 @@ def round_robin(players: list[Competidor]):
         round_matches = []
         for i in range(len(players) // 2):
             if players[i] is not None and players[-i - 1] is not None:
-                match = Jogo(id_competidor_1=players[i].id, id_competidor_2=players[(-i - 1)].id)
+                match = Jogo(id_competidor_1=players[i].id, id_competidor_2=players[(-i - 1)].id, nota=0)
                 round_matches.append(match)
         players.insert(1, players.pop())
         matches.append(round_matches)
