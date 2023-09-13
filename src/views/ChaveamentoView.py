@@ -2,11 +2,10 @@ from fastapi import APIRouter
 from starlette.responses import RedirectResponse
 from src.services.ChaveamentoService import ChaveamentoService
 
-chaveamento_route = APIRouter(prefix='/chaveamento')
+chaveamento_router = APIRouter(prefix='/chaveamento')
 assets_router = APIRouter(prefix='/assets')
 
-
-@chaveamento_route.get('/')
+@chaveamento_router.get('/')
 def get_root():
     return 'rota chaveamento'
 

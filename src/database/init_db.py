@@ -1,17 +1,11 @@
-from asyncio import run
+import asyncio
 
-from src.database.db_connection import DBConnection
+from src.database.db_connection import engine
 from src.models.models import Base
-
-db_conn = DBConnection()
-engine = db_conn.get_engine()
-
 
 async def create_database():
     async with engine.begin() as connection:
         await connection.run_sync(Base.metadata.drop_all)
         await connection.run_sync(Base.metadata.create_all)
 
-
-if __name__ == '__main__':
-    run(create_database())
+asyncio.run(create_database())
