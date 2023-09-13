@@ -5,7 +5,7 @@ from src.models.models import Jogo, Competidor
 def divide_players(players):
     divided_players = []
     if len(players) % 2 != 0:
-        players.append(Competidor(apelido="", nome_estado=""))
+        players.append(Competidor(apelido="", sexo="", idade=""))
     for _ in range(len(players) // 4):
         group = random.sample(players, 4)
         for name in group:

@@ -28,7 +28,6 @@ class ChaveamentoService:
 
 
     async def qualifiers(self):
-        async_session = DBConnection().get_engine()
         async with async_session() as session:
             result = await session.execute(select(Jogo))
             jogos_competidores = []
@@ -42,7 +41,6 @@ class ChaveamentoService:
 
 
     async def semifinals(self):
-        async_session = DBConnection().get_engine()
         async with async_session() as session:
             result = await session.execute(select(Competidor).order_by(desc(Competidor.nome)).limit(8))
             return result.scalars().all()
