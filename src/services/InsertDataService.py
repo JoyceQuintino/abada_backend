@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.models.models import Competidor, Filiacao, Graduacao, CategoriaEnum, Jurado
+from src.models.models import Competidores, Filiacoes, Graduacoes
 from src.database.db_connection import async_session 
 
 def get_data_to_insert():
@@ -13,9 +13,10 @@ class InsertDataService:
         data = get_data_to_insert()
         async with async_session() as session:
             for row in data.itertuples():
-                competidor = Competidor(
+                competidor = Competidores(
                     nome=row.nome,
                     apelido=row.apelido,
+                    numero=row.numero,
                     cidade=row.cidade,
                     estado=row.estado
                 )
