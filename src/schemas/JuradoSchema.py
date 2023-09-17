@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class JuradoCreateInput(BaseModel):
+class JuradoInput(BaseModel):
     nome: str
 
 class StandardOutput(BaseModel):
