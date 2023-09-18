@@ -4,7 +4,7 @@ from src.models.models import Competidor, Filiacao, Graduacao, CategoriaEnum, Ju
 from src.database.db_connection import async_session 
 
 def get_data_to_insert():
-        competidores = pd.read_csv('database-abada.csv')
+        competidores = pd.read_csv('database-teste.csv')
         data_frame = pd.DataFrame(competidores)
         return data_frame
 
@@ -17,7 +17,8 @@ class InsertDataService:
                     nome=row.nome,
                     apelido=row.apelido,
                     cidade=row.cidade,
-                    estado=row.estado
+                    estado=row.estado,
+                    sexo=row.sexo
                 )
                 session.add(competidor)
                 await session.commit()

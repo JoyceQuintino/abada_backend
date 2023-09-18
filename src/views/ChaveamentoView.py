@@ -15,8 +15,9 @@ async def get_qualifiers():
 
 @chaveamento_router.get('/get_qualifiers')
 async def get_qualifiers_matches():
-    await ChaveamentoService().qualifiers_matches()
-    return RedirectResponse(url='/chaveamento/qualifiers')
+    return await ChaveamentoService().qualifiers_matches()
+    # return RedirectResponse(url='/chaveamento/qualifiers')
+
 
 @chaveamento_router.get('/get_semifinals')
 async def get_semifinals():
