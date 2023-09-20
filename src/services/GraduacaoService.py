@@ -2,7 +2,8 @@ import pandas as pd
 
 from src.services.InsertDataAllServices import InsertDataAllServices
 from src.models.models import Graduacoes
-from src.database.db_connection import async_session 
+from src.database.db_connection import async_session
+from sqlalchemy.future import select
 
 PATH_NAME = 'graduacoes_data.csv'
 
@@ -13,7 +14,7 @@ def get_data_to_insert():
 
 class GraduacaoService:
     async def insert_graduacao():
-        data = InsertDataAllServices.get_data_to_insert()
+        data = InsertDataAllServices.get_data_to_insert('data/graduacoes_data.csv')
         async with async_session() as session:
             for row in data.itertuples():
                 graduacao = Graduacoes(
