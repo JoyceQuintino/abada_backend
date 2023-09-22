@@ -11,7 +11,4 @@ async def insert_graduacao():
 
 @graduacao_router.get('/get_all_graduacoes')
 async def get_all():
-    try:
-        return await GraduacaoService.get_all_graduacoes()
-    except:
-        pass
+    return await GraduacaoService.get_all_graduacoes()
