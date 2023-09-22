@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b472c4e-3953-4dae-abb3-c2431d25f958" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/ChaveamentoService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ChaveamentoService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/CompetidorService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/CompetidorService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/InsertDataService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/InsertDataService.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/InsercaoView.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/InsercaoView.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +89,7 @@
       <workItem from="1694456480871" duration="6522000" />
       <workItem from="1694538233601" duration="32992000" />
       <workItem from="1694629048551" duration="31711000" />
-      <workItem from="1695231006680" duration="13119000" />
+      <workItem from="1695231006680" duration="13456000" />
     </task>
     <servers />
   </component>

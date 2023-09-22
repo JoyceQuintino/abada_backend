@@ -28,16 +28,15 @@ class ChaveamentoService:
             #       id_modalidade=modalidades[0].id,
             #       id_pontuacao=pontuacao.id)
             for group in divisao_masculina:
-                if not isinstance(group, list):
-                    match_groups = round_robin(divisao_masculina)
-                    matches_masc.append(match_groups[0])
-                    matches_masc.append(match_groups[1])
-                    break
+                # if not isinstance(group, list):
+                #     match_groups = round_robin(divisao_masculina)
+                #     matches_masc.append(match_groups[0])
+                #     matches_masc.append(match_groups[1])
+                #     break
                 match_groups = round_robin(group)
                 matches_masc.append(match_groups[0])
                 matches_masc.append(match_groups[1])
-            for match in matches_masc:
-                print(match)
+                matches_masc.append(match_groups[2])
             return matches_masc
             # for group in divisao_feminina:
             #     if not isinstance(group, list):

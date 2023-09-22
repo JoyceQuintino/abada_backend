@@ -39,6 +39,7 @@ def round_robin(players: list[Competidores]):
     for _ in range(num_rounds):
         round_matches = []
         for i in range(len(players) // 2):
+            print(f'{players[i]} - {players[-i-1]}')
             if players[i] is not None and players[-i - 1] is not None:
                 # match = Jogo(id_competidor_1=players[i].id, id_competidor_2=players[(-i - 1)].id, nota=0)
                 match = (players[i], players[-i - 1])
