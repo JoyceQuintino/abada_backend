@@ -1,22 +1,16 @@
-nome,apelido,filiacao,graduacao,cidade,estado
-Daniel facundo da Silva,Aquático,Mandala,Verde,Morada Nova,Ceará
-Lourenço Martins de Sousa,Lourenço,Mestrando dody,Laranja,Aracati,Ceará
-Ronaldo Dias da Silva,Mineiro,Castanha,Laranja,Fortaleza,Ceará
-Heitor Batista de Brito Silva,BH,Castanha,Laranja,Fortaleza,Ceará
-LUIZ FERNANDES DE FREITA COSTA,PITCHULA,CASTANHA,Laranja-azul,Fortaleza,Ceará
-Ana Ruth Silva Moura,Emília-ce,Castanha,Azul-verde,Fortaleza,Ceará
-José geanatan dos Santos,Sansão,Professor  cachorro d'água,Verde,Fortaleza,Ceará
-Claudio Almeida Araujo filho,Clandestino,Castanha,Azul-verde,Fortaleza,Ceará
-Claudio Almeida Araujo filho,Clandestino,Castanha,Azul-verde,Fortaleza,Ceará
-Francisco William Ribeiro de Castro,Galo,Castanha,Azul-verde,Fortaleza,Ceara
-Dennis rahmam,Jack,Castanha,Laranja-azul,Fortaleza,Ceará
-Elvis Cauã Alves da Silva,Grilo,Professor Castanha-Ce,Verde,Fortaleza,Ceará
-Luzirene carneiro de oliveira,Buchecha,Graduado pantera,Laranja-azul,Fortaleza,Ceara
-Lúcia Macela Vieira Nascimento,Rendeira,Castanha,Roxa,Fortaleza,Ceará
-Paulo Victor carneiro de oliveira,Gravador,Graduado pantera,Laranja-azul,Fortaleza,Ceara
-Gilberto Chaves Monteiro,Olinda,Castanha,Crua-amarela,Fortaleza,Ceará
-Italo Daniel Gomes de Sousa,Fantasma,Castanha,Amarela,Fortaleza,Ceará
-Guilherme Alves de Oliveira,Tetel,Castanha ce,Azul-verde,Fortaleza,Ceará
-Leandro oliveira Simão,Camelô,Castanha,Laranja,Fortaleza,Ceara
-Wandemberg de Oliveira Viana,Lagarto,Berimbau,Verde,Fortaleza,Ceará
-Lindemberg Andrade Tavares,Brócolis,Castanha,Laranja,Fortaleza,Ceará
+nome,apelido,numero,cidade,estado,sexo,idade,filiacao,graduacao
+wendy,jandaia,0,Fortaleza,CE,F,,Berimbau,laranja-azul
+carlos,pajé,1,Fortaleza,CE,M,,Berimbau,laranja
+caio,super-choque,2,Fortaleza,CE,M,,Berimbau,laranja
+pp,pp,3,Fortaleza,CE,M,,Berimbau,laranja
+baqueta,baqueta,4,Fortaleza,CE,M,,Berimbau,laranja
+jambo,jambo,5,Fortaleza,CE,M,,Berimbau,laranja
+walyson,guerreiro,6,Fortaleza,CE,M,,Berimbau,verde
+lobo,lobo,7,Fortaleza,CE,M,,Berimbau,roxa
+douglas,shampoo,8,Fortaleza,CE,M,,Berimbau,azul-verde
+leonardo,artista,9,Fortaleza,CE,M,,Berimbau,azul-verde
+cadarço,cadarço,10,Fortaleza,CE,M,,Berimbau,verde
+lagarto,lagarto,11,Fortaleza,CE,M,,Berimbau,verde
+espinho,espinho,12,Fortaleza,CE,M,,Berimbau,roxa
+careca,careca,13,Fortaleza,CE,M,,Berimbau,roxa
+joyce,joyce,14,Fortaleza,CE,F,,Berimbau,laranja

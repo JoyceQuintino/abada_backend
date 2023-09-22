@@ -4,9 +4,23 @@ from src.views.CompetidorView import competidor_router
 from src.views.ChaveamentoView import chaveamento_router
 from src.views.JuradoView import jurado_router
 from src.views.GraduacaoView import graduacao_router
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 router = APIRouter()
+
+origins = [
+    "http://localhost:3000",
+    "localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 @router.get('/')
 def initial():

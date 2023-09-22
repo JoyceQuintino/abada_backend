@@ -7,4 +7,8 @@ class CompeditorService:
     async def get_all_competitors(self):
         async with async_session() as session:
             result = await session.execute(select(Competidores))
-            return result.scalars().all()
+            competidores = result.scalars().all()
+            nomes = []
+            for competidor in competidores:
+                nomes.append(competidor.nome)
+            return competidores
