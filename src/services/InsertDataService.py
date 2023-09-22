@@ -2,7 +2,7 @@ import random
 
 import pandas as pd
 
-from src.models.models import Competidores, Filiacoes, Graduacoes
+from src.models.models import Competidores, Filiacoes, Graduacoes, Modalidades
 from src.database.db_connection import async_session 
 from sqlalchemy.future import select
 from sqlalchemy.orm import lazyload
@@ -13,6 +13,18 @@ def get_data_to_insert():
         return data_frame
 
 class InsertDataService:
+
+    async def insert_modalidade(self):
+        async with async_session() as session:
+            modalidades=["siriuna", "benguela", "são bento grande"]
+            modalidades_to_save = []
+            for modalidade in modalidades:
+                modalidade_save = Modalidades(nome=modalidade)
+                modalidades_to_save.append(modalidade_save)
+            session.add_all(modalidades_to_save)
+            await session.commit()
+
+
     async def inserting_data():
         data = get_data_to_insert()
         async with async_session() as session:
