@@ -7,7 +7,4 @@ assets_router = APIRouter(prefix='/assets')
 
 @insert_router.get('/insert_data')
 async def insert_data():
-    try:
-        await InsertDataService.inserting_data()
-    except:
-        pass
+    return await InsertDataService.inserting_data()
