@@ -8,7 +8,7 @@ from sqlalchemy.future import select
 from sqlalchemy.orm import lazyload
 
 def get_data_to_insert():
-        competidores = pd.read_csv('database-abada.csv')
+        competidores = pd.read_csv('database-teste.csv')
         data_frame = pd.DataFrame(competidores)
         return data_frame
 
