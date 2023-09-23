@@ -5,6 +5,7 @@ from src.views.ChaveamentoView import chaveamento_router
 from src.views.JuradoView import jurado_router
 from src.views.GraduacaoView import graduacao_router
 from fastapi.middleware.cors import CORSMiddleware
+from uvicorn import run
 
 app = FastAPI()
 router = APIRouter()
@@ -22,9 +23,11 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
+
 @router.get('/')
 def initial():
     return 'Welcome here!'
+
 
 app.include_router(prefix='/initial', router=router)
 app.include_router(insert_router)
