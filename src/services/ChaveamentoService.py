@@ -3,7 +3,8 @@ from sqlalchemy.future import select
 from src.utils.util import round_robin, divide_players, separate_by_sex
 
 from src.database.db_connection import async_session 
-from src.models.models import Competidores, Jogos, Modalidades
+from src.models.models import Competidores, Jogos, Modalidades, Graduacoes
+from random import sample
 
 
 class ChaveamentoService:
@@ -13,49 +14,70 @@ class ChaveamentoService:
             competidores = result.scalars().all()
             result = await session.execute(select(Modalidades))
             modalidades = result.scalars().all()
-            # print(f'{modalidades}\n{competidores}')
+            result = await session.execute(select(Graduacoes))
+            graduacoes = result.scalars().all()
             divided_sex = separate_by_sex(competidores)
             divisao_feminina = divide_players(divided_sex[0])
+            # print(divisao_feminina)
             divisao_masculina = divide_players(divided_sex[1])
-            # print(f'divisao feminina: {divisao_feminina}\n')
-            # print(f'divisao masculina: {divisao_masculina}')
             matches_masc = []
             matches_fem = []
-            # Jogos(nota=0,
-            #       jogo_valido=0,
-            #       id_competidor_1=players[i].id,
-            #       id_competidor_2=players[-i - 1].id,
-            #       id_modalidade=modalidades[0].id,
-            #       id_pontuacao=pontuacao.id)
-            for group in divisao_masculina:
+            jogos_masc = []
+            jogos_fem = []
+            for modalidade in modalidades:
+                for group in divisao_masculina:
+                    if not isinstance(group, list):
+                        match_groups = round_robin(divisao_masculina)
+                        matches_masc.append(match_groups[0])
+                        matches_masc.append(match_groups[1])
+                        jogo = Jogos(nota=0,
+                              jogo_valido=True,
+                              id_competidor_1=match_groups[0].id,
+                              id_competidor_2=match_groups[1].id,
+                              id_modalidade=modalidade.id)
+                        jogos_masc.append(jogo)
+                        break
+                    match_groups = round_robin(group)
+                    for item in match_groups:
+                        for element in item:
+                            print(element)
+                            jogo = Jogos(nota=0,
+                                  jogo_valido=True,
+                                  id_competidor_1=element[0].id,
+                                  id_competidor_2=element[1].id,
+                                  id_modalidade=modalidade.id)
+                            jogos_masc.append(jogo)
+                            matches_masc.append(element)
+            for group in divisao_feminina:
                 if not isinstance(group, list):
-                    match_groups = round_robin(divisao_masculina)
-                    matches_masc.append(match_groups[0])
-                    matches_masc.append(match_groups[1])
+                    match_groups = round_robin(divisao_feminina)
+                    for item in match_groups:
+                        for element in item:
+                            matches_fem.append(element)
+                            jogo = Jogos(nota=0,
+                                         jogo_valido=True,
+                                         id_competidor_1=element[0].id,
+                                         id_competidor_2=element[1].id,
+                                         id_modalidade=modalidade.id)
+                            jogos_fem.append(jogo)
                     break
                 match_groups = round_robin(group)
                 for item in match_groups:
                     for element in item:
                         print(element)
-                        matches_masc.append(element)
-            return matches_masc
-            # for group in divisao_feminina:
-            #     if not isinstance(group, list):
-            #         match_groups = round_robin(divisao_feminina, modalidades)
-            #         matches_fem.append(match_groups[0])
-            #         matches_fem.append(match_groups[1])
-            #         break
-            #     match_groups = round_robin(group, modalidades)
-            #     matches_fem.append(match_groups[0])
-            #     matches_fem.append(match_groups[1])
-            # for match in matches_masc and matches_fem:
-            #     result = await session.execute(select(Jogos))
-            #     jogos = result.scalars().all()
-            #     print(jogos)
-            #     if match[0] not in jogos and match[1] not in jogos:
-            #         session.add_all([match[0], match[1]])
-            #         await session.commit()
-            # return matches_masc, matches_fem
+                        matches_fem.append(element)
+                        jogo = Jogos(nota=0,
+                              jogo_valido=True,
+                              id_competidor_1=element[0].id,
+                              id_competidor_2=element[1].id,
+                              id_modalidade=modalidade.id)
+                        jogos_fem.append(jogo)
+            return {
+                "jogos_masc": jogos_masc,
+                "jogos_fem": jogos_fem,
+                "competidores": competidores
+            }
+
 
 
 
