@@ -99,5 +99,10 @@ class ChaveamentoService:
             result = await session.execute(select(Competidores).order_by(desc(Competidores.nome)).limit(8))
             return result.scalars().all()
 
+    async def finals(self):
+        async with async_session() as session:
+            result = await session.execute(select(Competidores).order_by(desc(Competidores.nome)).limit(4))
+            return result.scalars().all()
+
     async def final(self):
         pass
