@@ -75,7 +75,8 @@ class ChaveamentoService:
             return {
                 "jogos_masc": jogos_masc,
                 "jogos_fem": jogos_fem,
-                "competidores": competidores
+                "partidas_masc": matches_masc,
+                "partidas_fem": matches_fem
             }
 
 
