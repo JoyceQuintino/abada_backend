@@ -76,7 +76,6 @@ class Jogos(Base):
     id_competidor_1 = Column('id_competidor_1', UUID(), ForeignKey('Competidores.id', ondelete='CASCADE'))
     id_competidor_2 = Column('id_competidor_2', UUID(), ForeignKey('Competidores.id', ondelete='CASCADE'))
     id_modalidade = Column('id_modalidade', UUID(), ForeignKey('Modalidades.id', ondelete='CASCADE'))
-    id_pontuacao = Column('id_pontuacao', UUID(), ForeignKey('Pontuacoes.id', ondelete='CASCADE'))
     competidor_1 = relationship("Competidores", foreign_keys=[id_competidor_1])
     competidor_2 = relationship("Competidores", foreign_keys=[id_competidor_2])
     modalidade = relationship("Modalidades", foreign_keys=id_modalidade)
@@ -96,8 +95,9 @@ class Pontuacoes(Base):
     pontuacao_competidor_2 = Column('pontuacao_competidor_2', Float, nullable=False)
     pontuacao_jogo = Column('pontuacao_jogo', Float, nullable=False)
     id_jurado = Column('id_jurado', UUID(), ForeignKey('Jurados.id', ondelete='CASCADE'))
+    id_jogo = Column('id_jogo', UUID(), ForeignKey('Jogos.id', ondelete='CASCADE'))
     jurado = relationship("Jurados", foreign_keys=id_jurado)
-    # jogo = relationship('Jogos', backref='Pontuacoes')
+    jogo = relationship("Jogos", foreign_keys=id_jogo)
 
 
 class Jurados(Base):
