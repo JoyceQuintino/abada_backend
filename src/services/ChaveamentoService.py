@@ -72,6 +72,8 @@ class ChaveamentoService:
                               id_competidor_2=element[1].id,
                               id_modalidade=modalidade.id)
                         jogos_fem.append(jogo)
+                session.add_all(jogos_masc + jogos_fem)
+                await session.commit()
             return {
                 "jogos_masc": jogos_masc,
                 "jogos_fem": jogos_fem,
