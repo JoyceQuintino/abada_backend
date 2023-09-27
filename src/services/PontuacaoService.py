@@ -9,6 +9,5 @@ class Pontuacao:
     async def insert_jogo(pontuacao: Pontuacoes):
         print('Cadastrando pontuacao...')
         async with async_session() as session:
-            await session.add(pontuacao)
+            session.add(pontuacao)
             await session.commit()
-            session.commit()
