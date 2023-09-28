@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from src.services import JuradoService
 from src.schemas import JuradoSchema
 
-jurado_router = APIRouter(prefix='/insert')
+jurado_router = APIRouter(prefix='/jurado')
 assets_router = APIRouter(prefix='/assets')
 
 @jurado_router.post('/insert_jurado', response_model=JuradoSchema.StandardOutput)

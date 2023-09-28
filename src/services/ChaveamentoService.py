@@ -59,12 +59,12 @@ class ChaveamentoService:
                                          id_competidor_1=element[0].id,
                                          id_competidor_2=element[1].id,
                                          id_modalidade=modalidade.id)
+                            session.add(jogo)
                             jogos_fem.append(jogo)
                     break
                 match_groups = round_robin(group)
                 for item in match_groups:
                     for element in item:
-                        print(element)
                         matches_fem.append(element)
                         jogo = Jogos(nota=0,
                               jogo_valido=True,
@@ -72,8 +72,8 @@ class ChaveamentoService:
                               id_competidor_2=element[1].id,
                               id_modalidade=modalidade.id)
                         jogos_fem.append(jogo)
-                session.add_all(jogos_masc + jogos_fem)
-                await session.commit()
+            # session.add_all(jogos_masc + jogos_fem)
+            # await session.commit()
             return {
                 "jogos_masc": jogos_masc,
                 "jogos_fem": jogos_fem,

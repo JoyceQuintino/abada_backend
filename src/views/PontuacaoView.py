@@ -9,9 +9,9 @@ pontuacao_router = APIRouter(prefix='/pontuacao')
 
 @pontuacao_router.post('/fechar_jogo')
 async def fechar_jogo(request: dict):
-    pontuacao_competidor_1 = request["pontuacao_competidor_1"]
-    pontuacao_competidor_2 = request["pontuacao_competidor_2"]
-    pontuacao_jogo = request["pontuacao_jogo"]
+    pontuacao_competidor_1 = float(request["pontuacao_competidor_1"])
+    pontuacao_competidor_2 = float(request["pontuacao_competidor_2"])
+    pontuacao_jogo = float(request["pontuacao_jogo"])
     jogo = request["id_jogo"]
     jurado = request["id_jurado"]
     pontuacao = Pontuacoes(pontuacao_competidor_1=pontuacao_competidor_1,
@@ -19,6 +19,8 @@ async def fechar_jogo(request: dict):
                            pontuacao_jogo=pontuacao_jogo,
                            id_jurado=jurado,
                            id_jogo=jogo)
+    # return pontuacao
+    # return await Pontuacao.update_pontuacao(pontuacao)
     return await Pontuacao().insert_jogo(pontuacao)
 
 # pontuacao_competidor_1 = Column('pontuacao_competidor_1', Float, nullable=False)

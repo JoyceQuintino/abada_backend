@@ -57,6 +57,7 @@ class Competidores(Base):
     nome = Column('nome', String, nullable=False)
     apelido = Column('apelido', String, nullable=False)
     numero = Column('numero', Integer, nullable=True)
+    # nota = Column('nota', Float, nullable=True)
     cidade = Column('cidade', String, nullable=False)
     estado = Column('estado', String, nullable=False)
     sexo = Column('sexo', String, nullable=True)
