@@ -2,7 +2,7 @@ import random
 
 import pandas as pd
 
-from src.models.models import Competidores, Filiacoes, Graduacoes, Modalidades
+from src.models.models import Competidores, Filiacoes, Graduacoes, Modalidades, Categorias
 from src.database.db_connection import async_session 
 from sqlalchemy.future import select
 from sqlalchemy.orm import lazyload
@@ -12,7 +12,26 @@ def get_data_to_insert():
         data_frame = pd.DataFrame(competidores)
         return data_frame
 
+
+def get_data_categoria():
+    categorias = pd.read_csv('categorias.csv')
+    data_frame = pd.DataFrame(categorias)
+    return data_frame
+
+
 class InsertDataService:
+
+    @staticmethod
+    async def insert_categorias():
+        data = get_data_categoria()
+        categorias = []
+        async with async_session() as session:
+            for row in data.itertuples():
+                categorias.append(Categorias(nome=row.nome))
+            print(categorias)
+            session.add_all(categorias)
+            await session.commit()
+
 
     async def insert_modalidade(self):
         async with async_session() as session:
@@ -25,7 +44,7 @@ class InsertDataService:
             await session.commit()
 
 
-    async def inserting_data():
+    async def inserting_data(self):
         data = get_data_to_insert()
         async with async_session() as session:
             # result = (await session.scalars(select(Graduacoes))).all()

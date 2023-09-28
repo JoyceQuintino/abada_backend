@@ -3,19 +3,18 @@ from sqlalchemy.future import select
 from src.utils.util import round_robin, divide_players, separate_by_sex
 
 from src.database.db_connection import async_session 
-from src.models.models import Competidores, Jogos, Modalidades, Graduacoes
+from src.models.models import Competidores, Jogos, Modalidades, Graduacoes, Categorias
 from random import sample
 
 
 class ChaveamentoService:
     async def qualifiers_matches(self):
         async with async_session() as session:
-            result = await session.execute(select(Competidores))
-            competidores = result.scalars().all()
+            competidores = {}
             result = await session.execute(select(Modalidades))
             modalidades = result.scalars().all()
-            result = await session.execute(select(Graduacoes))
-            graduacoes = result.scalars().all()
+            result = await session.execute(select(Categorias))
+            categorias = result.scalars().all()
             divided_sex = separate_by_sex(competidores)
             divisao_feminina = divide_players(divided_sex[0])
             # print(divisao_feminina)
@@ -24,6 +23,11 @@ class ChaveamentoService:
             matches_fem = []
             jogos_masc = []
             jogos_fem = []
+            print(categorias)
+            for categoria in categorias:
+                result = await session.execute(select(Graduacoes).where(Graduacoes.id_categoria == categoria.id))
+                # competidores[categoria.nome] = result.scalars().all()
+            return result.scalars().all()
             for modalidade in modalidades:
                 for group in divisao_masculina:
                     if not isinstance(group, list):

@@ -14,3 +14,8 @@ async def insert_data():
 @insert_router.get('/insert_modalidade')
 async def insert_modalidade():
     return await InsertDataService().insert_modalidade()
+
+
+@insert_router.get('/insert_categorias')
+async def insert_categorias():
+    return await InsertDataService.insert_categorias()
