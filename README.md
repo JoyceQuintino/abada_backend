@@ -1,6 +1,6 @@
-# Abadá Capoeira - API para Jogos Competitivos
+# API para Jogos Competitivos - Capoeira
 
-Esta é a API da aplicação web para os jogos competitivos da Abadá-Capoeira Ceará, desenvolvida em Python utilizando frameworks como FastAPI e SQLAlchemy.
+Esta é a API da aplicação web para as competições de capoeira, desenvolvida em Python utilizando as tecnologias FastAPI, SQLAlchemy, PostgreSQL e Docker.
 
 ## Requisitos do Sistema
 
