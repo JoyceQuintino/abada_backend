@@ -10,7 +10,6 @@ Esta é a API da aplicação web para as competições de capoeira, desenvolvida
 - [SQLAlchemy](https://www.sqlalchemy.org/)
 - [Docker](https://www.docker.com/)
 - [PostgreSQL](https://www.postgresql.org/)
-- [pgAdmin](https://www.pgadmin.org/)
 
 ## Configuração do Ambiente
 
