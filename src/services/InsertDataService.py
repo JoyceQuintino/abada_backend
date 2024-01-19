@@ -6,6 +6,7 @@ from src.models.models import Competidores, Filiacoes, Graduacoes, Modalidades, 
 from src.database.db_connection import async_session 
 from sqlalchemy.future import select
 from sqlalchemy.orm import lazyload
+from src.services.JuradoService import JuradoService
 
 def get_data_to_insert():
         competidores = pd.read_csv('database-teste.csv')
@@ -21,6 +22,7 @@ def get_data_categoria():
 
 class InsertDataService:
 
+    """ Função para adicionar categorias no banco de dados """
     @staticmethod
     async def insert_categorias():
         data = get_data_categoria()
@@ -28,12 +30,12 @@ class InsertDataService:
         async with async_session() as session:
             for row in data.itertuples():
                 categorias.append(Categorias(nome=row.nome))
-            print(categorias)
             session.add_all(categorias)
             await session.commit()
 
-
-    async def insert_modalidade(self):
+    """ Função para adicionar modalidades dentro do banco """
+    @staticmethod
+    async def insert_modalidade():
         async with async_session() as session:
             modalidades=["siriuna", "benguela", "são bento grande"]
             modalidades_to_save = []
@@ -43,8 +45,9 @@ class InsertDataService:
             session.add_all(modalidades_to_save)
             await session.commit()
 
-
-    async def inserting_data(self):
+    """ Inserir dados de todos os competidores na tabela """
+    @staticmethod
+    async def inserting_data():
         data = get_data_to_insert()
         async with async_session() as session:
             # result = (await session.scalars(select(Graduacoes))).all()
