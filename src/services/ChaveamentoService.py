@@ -8,6 +8,22 @@ from random import sample
 
 
 class ChaveamentoService:
+    
+    @staticmethod
+    async def chaveamento_categoria(categoria: str):
+        async with async_session() as session:
+            result = await session.execute(select(Categorias).where(Categorias.nome == categoria))
+            categoria_obj = result.scalars().all().first()
+            print(f'{categoria_obj.nome} = {categoria_obj.id}')
+            
+        return {
+            "categoria": categoria_obj,
+            "jogos_fem": [],
+            "jogos_masc": [],
+            "competidores_categoria": []
+        }
+            
+    
     async def qualifiers_matches(self):
         async with async_session() as session:
             competidores = {}
