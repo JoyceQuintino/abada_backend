@@ -4,6 +4,7 @@ import uuid
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import Column, Integer, String, ForeignKey, Enum, Float
 from sqlalchemy.orm import declarative_base, relationship, DeclarativeBase
+from pydantic.dataclasses import dataclass
 
 Base = declarative_base()
 
@@ -22,6 +23,7 @@ def id_column():
     import uuid
     return Column(ID_COLUMN_NAME,UUID(),primary_key=True,default=uuid.uuid4)
 
+@dataclass
 class Categorias(Base):
     __tablename__ = 'Categorias'
     id =  id_column()

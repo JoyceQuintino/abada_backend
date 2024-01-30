@@ -1,29 +1,38 @@
 from sqlalchemy import desc
+from typing import List
 from sqlalchemy.future import select
 from src.utils.util import round_robin, divide_players, separate_by_sex
-
-from src.database.db_connection import async_session 
+from pydantic import TypeAdapter
+from src.database.db_connection import async_session
 from src.models.models import Competidores, Jogos, Modalidades, Graduacoes, Categorias
 from random import sample
 
 
 class ChaveamentoService:
-    
+
     @staticmethod
     async def chaveamento_categoria(categoria: str):
         async with async_session() as session:
-            result = await session.execute(select(Categorias).where(Categorias.nome == categoria))
-            categoria_obj = result.scalars().all().first()
-            print(f'{categoria_obj.nome} = {categoria_obj.id}')
-            
-        return {
-            "categoria": categoria_obj,
-            "jogos_fem": [],
-            "jogos_masc": [],
-            "competidores_categoria": []
-        }
-            
-    
+            result = await session.execute(select(Categorias). \
+                where(Categorias.nome == categoria.lower()))
+            categoria_obj: Categorias = result.scalars().all()[0]
+            result = await session.execute(select(Graduacoes). \
+                where(Graduacoes.id_categoria == categoria_obj.id))
+            graduacoes = result.scalars().all()
+            competidores_categoria: List[Competidores] = []
+            for graduacao in graduacoes:
+                result = await session.execute(select(Competidores). \
+                    where(Competidores.id_graduacao == graduacao.id))
+                competidores_categoria += result.scalars().all()
+            #TODO: Chamar funções para separação de sexo e posteriormente para divisao dos jogos
+            return {
+                "categoria": {},
+                "jogos_fem": [[]],
+                "jogos_masc": [[]],
+                "competidores_categoria": []
+            }
+
+
     async def qualifiers_matches(self):
         async with async_session() as session:
             competidores = {}
@@ -109,8 +118,8 @@ class ChaveamentoService:
             result = await session.execute(select(Jogos))
             jogos_competidores = []
             for jogo in result.scalars().all():
-                competidor_1 = await session.execute(select(Competidores).filter(jogo.id_competidor_1 == Competidor.id))
-                competidor_2 = await session.execute(select(Competidores).filter(jogo.id_competidor_2 == Competidor.id))
+                competidor_1 = await session.execute(select(Competidores).filter(jogo.id_competidor_1 == Competidores.id))
+                competidor_2 = await session.execute(select(Competidores).filter(jogo.id_competidor_2 == Competidores.id))
                 jogos_competidores.append([jogo,
                                        competidor_1.scalars().all(),
                                        competidor_2.scalars().all()])
