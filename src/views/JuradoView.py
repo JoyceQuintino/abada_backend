@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from src.services import JuradoService
+from src.services.JuradoService import JuradoService
 from src.schemas import JuradoSchema
 
 jurado_router = APIRouter(prefix='/jurado')
@@ -13,3 +13,6 @@ async def jurado_create(jurado_input: JuradoSchema.JuradoInput):
     except:
         pass
 
+@jurado_router.get('/get_all_jurados')
+async def get_all_jurados():
+    return await JuradoService().get_all_jurados()
