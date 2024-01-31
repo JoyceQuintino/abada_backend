@@ -1,8 +1,7 @@
 from sqlalchemy import desc
 from typing import List
 from sqlalchemy.future import select
-from src.utils.util import round_robin, divide_players, separate_by_sex
-from pydantic import TypeAdapter
+from src.utils.util import Utils
 from src.database.db_connection import async_session
 from src.models.models import Competidores, Jogos, Modalidades, Graduacoes, Categorias
 from random import sample
@@ -14,10 +13,11 @@ class ChaveamentoService:
     async def chaveamento_categoria(categoria: str):
         async with async_session() as session:
             result = await session.execute(select(Competidores).join(Graduacoes).join(Categorias).where(Categorias.nome == categoria))
-            competidores = result.scalars().all()
+            comps = result.scalars().all()
             #TODO: Chamar funções para separação de sexo e posteriormente para divisao dos jogos
+            (comp_fem, comp_masc) = Utils.separate_by_sex(comps)
             return {
-                "categoria": {},
+                "categoria": categoria,
                 "jogos_fem": [[]],
                 "jogos_masc": [[]],
                 "competidores_categoria": []
