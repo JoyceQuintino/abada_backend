@@ -13,17 +13,8 @@ class ChaveamentoService:
     @staticmethod
     async def chaveamento_categoria(categoria: str):
         async with async_session() as session:
-            result = await session.execute(select(Categorias). \
-                where(Categorias.nome == categoria.lower()))
-            categoria_obj: Categorias = result.scalars().all()[0]
-            result = await session.execute(select(Graduacoes). \
-                where(Graduacoes.id_categoria == categoria_obj.id))
-            graduacoes = result.scalars().all()
-            competidores_categoria: List[Competidores] = []
-            for graduacao in graduacoes:
-                result = await session.execute(select(Competidores). \
-                    where(Competidores.id_graduacao == graduacao.id))
-                competidores_categoria += result.scalars().all()
+            result = await session.execute(select(Competidores).join(Graduacoes).join(Categorias).where(Categorias.nome == categoria))
+            competidores = result.scalars().all()
             #TODO: Chamar funções para separação de sexo e posteriormente para divisao dos jogos
             return {
                 "categoria": {},
