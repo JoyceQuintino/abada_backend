@@ -4,6 +4,7 @@ import uuid
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import Column, Integer, String, ForeignKey, Enum, Float
 from sqlalchemy.orm import declarative_base, relationship, DeclarativeBase
+from pydantic.dataclasses import dataclass
 
 Base = declarative_base()
 
@@ -22,12 +23,11 @@ def id_column():
     import uuid
     return Column(ID_COLUMN_NAME,UUID(),primary_key=True,default=uuid.uuid4)
 
+@dataclass
 class Categorias(Base):
     __tablename__ = 'Categorias'
     id =  id_column()
     nome = Column('nome', String, nullable=False, unique=True)
-    # competidor = relationship('Competidores', backref='Categorias')
-    # graduacoes = relationship('Graduacoes', backref='Categorias')
 
 
 class Graduacoes(Base):
@@ -36,34 +36,29 @@ class Graduacoes(Base):
     nome = Column('nome', String, nullable=False, unique=True)
     id_categoria = Column('categoria_id', ForeignKey('Categorias.id', ondelete='CASCADE'))
     categoria = relationship("Categorias", foreign_keys=id_categoria)
-    # categoria = relationship('Categorias', backref='Graduacoes')
-    # competidor = relationship('Competidores', backref='Graduacoes')
-    # filiacao = relationship('Filiacoes', backref='Graduacoes')
 
 
 class Filiacoes(Base):
     __tablename__ = 'Filiacoes'
     id =  id_column()
-    nome = Column('nome', String, nullable=False)
+    nome = Column('nome', String, nullable=False, unique=True)
     tipo = Column('tipo', String, nullable=False)
     id_graduacao = Column('id_graduacao', UUID(), ForeignKey('Graduacoes.id', ondelete='CASCADE'))
     graduacao = relationship("Graduacoes", foreign_keys=id_graduacao)
-    # competidor = relationship('Competidores', backref='Filiacoes')
 
 
 class Competidores(Base):
     __tablename__ = 'Competidores'
     id =  id_column()
     nome = Column('nome', String, nullable=False)
-    apelido = Column('apelido', String, nullable=False)
+    apelido = Column('apelido', String, nullable=False, unique=True)
     numero = Column('numero', Integer, nullable=True)
-    # nota = Column('nota', Float, nullable=True)
     cidade = Column('cidade', String, nullable=False)
     estado = Column('estado', String, nullable=False)
     sexo = Column('sexo', String, nullable=True)
     idade = Column('idade', Integer, nullable=True)
     foto_url = Column('foto_url', String, nullable=True)
-    id_filiacao = Column('id_filiacao', UUID(), ForeignKey('Filiacoes.id', ondelete='CASCADE'))
+    id_filiacao = Column('id_filiacao', UUID(), ForeignKey('Filiacoes.id', ondelete='CASCADE'), nullable=True)
     id_graduacao = Column('id_graduacao', UUID(), ForeignKey('Graduacoes.id', ondelete='CASCADE'))
     filiacao = relationship("Filiacoes", foreign_keys=id_filiacao)
     graduacao = relationship("Graduacoes", foreign_keys=id_graduacao)
@@ -72,21 +67,21 @@ class Competidores(Base):
 class Jogos(Base):
     __tablename__ = 'Jogos'
     id =  id_column()
-    nota = Column('nota', Float, nullable=False)
-    jogo_valido = Column('jogo_valido', Integer, nullable=False)
+    jogo_valido = Column('jogo_valido', Integer, nullable=True)
     id_competidor_1 = Column('id_competidor_1', UUID(), ForeignKey('Competidores.id', ondelete='CASCADE'))
     id_competidor_2 = Column('id_competidor_2', UUID(), ForeignKey('Competidores.id', ondelete='CASCADE'))
     id_modalidade = Column('id_modalidade', UUID(), ForeignKey('Modalidades.id', ondelete='CASCADE'))
+    id_categoria = Column('id_categoria', UUID(), ForeignKey('Categorias.id', ondelete='CASCADE'))
     competidor_1 = relationship("Competidores", foreign_keys=[id_competidor_1])
     competidor_2 = relationship("Competidores", foreign_keys=[id_competidor_2])
     modalidade = relationship("Modalidades", foreign_keys=id_modalidade)
+    categoria = relationship("Categorias", foreign_keys=id_categoria)
 
 
 class Modalidades(Base):
     __tablename__ = 'Modalidades'
     id =  id_column()
     nome = Column('nome', String, nullable=False, unique=True)
-    # jogo = relationship('Jogos', backref='Modalidades')
 
 
 class Pontuacoes(Base):
@@ -104,6 +99,5 @@ class Pontuacoes(Base):
 class Jurados(Base):
     __tablename__ = 'Jurados'
     id =  id_column()
-    nome = Column('nome', String, nullable=False)
-    # jurado = relationship('Pontuacoes', backref='Jurados')
+    nome = Column('nome', String, nullable=False, unique=True)
     
