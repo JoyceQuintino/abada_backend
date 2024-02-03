@@ -23,7 +23,6 @@ def id_column():
     import uuid
     return Column(ID_COLUMN_NAME,UUID(),primary_key=True,default=uuid.uuid4)
 
-@dataclass
 class Categorias(Base):
     __tablename__ = 'Categorias'
     id =  id_column()
