@@ -4,7 +4,6 @@ import uuid
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import Column, Integer, String, ForeignKey, Enum, Float
 from sqlalchemy.orm import declarative_base, relationship, DeclarativeBase
-from pydantic.dataclasses import dataclass
 
 Base = declarative_base()
 
@@ -22,6 +21,12 @@ ID_COLUMN_NAME = "id"
 def id_column():
     import uuid
     return Column(ID_COLUMN_NAME,UUID(),primary_key=True,default=uuid.uuid4)
+
+class Users(Base):
+    __tablename__ = 'Users'
+    id = id_column()
+    username = Column('username', String, nullable=False, unique=True)
+    password = Column('password', String, nullable=False)
 
 class Categorias(Base):
     __tablename__ = 'Categorias'
@@ -89,9 +94,9 @@ class Pontuacoes(Base):
     pontuacao_competidor_1 = Column('pontuacao_competidor_1', Float, nullable=False)
     pontuacao_competidor_2 = Column('pontuacao_competidor_2', Float, nullable=False)
     pontuacao_jogo = Column('pontuacao_jogo', Float, nullable=False)
-    id_jurado = Column('id_jurado', UUID(), ForeignKey('Jurados.id', ondelete='CASCADE'))
+    id_user = Column('id_user', UUID(), ForeignKey('Users.id', ondelete='CASCADE'))
     id_jogo = Column('id_jogo', UUID(), ForeignKey('Jogos.id', ondelete='CASCADE'))
-    jurado = relationship("Jurados", foreign_keys=id_jurado)
+    user = relationship("Users", foreign_keys=id_user)
     jogo = relationship("Jogos", foreign_keys=id_jogo)
 
 

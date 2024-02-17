@@ -6,6 +6,8 @@ from src.database.db_connection import async_session
 from src.models.models import Competidores, Jogos, Modalidades, Graduacoes, Categorias
 from random import sample
 
+FEMININO = 'F'
+MASCULINO = 'M'
 
 class ChaveamentoService:
 
@@ -24,14 +26,15 @@ class ChaveamentoService:
             #TODO: Chamar funções para separação de sexo e posteriormente para divisao dos jogos
             (comp_fem, comp_masc) = Utils.separate_by_sex(comps)
             (chaves_fem, jogos_fem) = Utils.round_robin(players=comp_fem,
-                modalidades=modalidades,
-                categoria=categoria)
+                                                        genero=FEMININO,
+                                                        modalidades=modalidades,
+                                                        categoria=categoria)
             (chaves_masc, jogos_masc) = Utils.round_robin(players=comp_masc,
-                modalidades=modalidades,
-                categoria=categoria)
+                                                          genero=MASCULINO,
+                                                          modalidades=modalidades,
+                                                          categoria=categoria)
             session.add_all(jogos_masc + jogos_fem)
             result = await session.commit()
-            print(chaves_fem)
             return {
                 "categoria": categoria,
                 "chaves_fem": chaves_fem,

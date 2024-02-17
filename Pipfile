@@ -13,6 +13,11 @@ pytest = "*"
 psycopg2-binary = "*"
 python-dotenv = "*"
 greenlet = "*"
+passlib = "*"
+python-jose = "*"
+python-multipart = "*"
+alembic = "*"
+python-decouple = "*"
 
 [dev-packages]
 

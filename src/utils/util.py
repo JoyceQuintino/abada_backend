@@ -37,12 +37,16 @@ class Utils:
 
 
     @staticmethod
-    def round_robin(players: List, modalidades: List, categoria: str):
+    def round_robin(players: List, genero: str, modalidades: List, categoria: str):
         # print(players)
         chaves = {}
         jogos = []
+        
         if len(players) < 4:
-            players.append(Competidores(nome="Nulo", apelido="Nulo", cidade="Nulo", estado="Nulo", id_graduacao=players[0].id_graduacao))
+            if len(players) == 0:
+                players.append(Competidores(nome="", apelido="", cidade="", estado="", id_graduacao=""))
+            else:
+                players.append(Competidores(nome="Nulo", apelido="Nulo", cidade="Nulo", estado="Nulo", id_graduacao=players[0].id_graduacao))
         for i in range(len(players) - 1):
             rodada = {}
             if (modalidades[i].nome == "siriuna") and (categoria == "laranja-laranja-azul"):
@@ -51,8 +55,14 @@ class Utils:
                 jogo = Jogos(id_competidor_1=players[j].id,
                     id_competidor_2=players[-j-1].id,
                     modalidade=modalidades[i])
-                rodada[f'Jogo {j+1}'] = jogo
-                jogos.append(rodada[f'Jogo {j+1}'])
+                rodada[f'jogo_{j+1}'] = jogo
+                jogos.append(rodada[f'jogo_{j+1}'])
+            
+            if genero == 'F':
+                chaves['genero'] = 'Feminino'
+            else:
+                chaves['genero'] = 'Masculino'
+
             chaves[f'{modalidades[i].nome}'] = rodada
             players.insert(1, players.pop())
         return (chaves, jogos)

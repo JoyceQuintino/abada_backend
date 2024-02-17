@@ -4,8 +4,10 @@ from src.views.CompetidorView import competidor_router
 from src.views.ChaveamentoView import chaveamento_router
 from src.views.JuradoView import jurado_router
 from src.views.GraduacaoView import graduacao_router
+from src.views.CategoriaView import categoria_router
 from fastapi.middleware.cors import CORSMiddleware
 from src.views.PontuacaoView import pontuacao_router
+from src.views.UserView import user_router
 from uvicorn import run
 
 app = FastAPI()
@@ -37,3 +39,5 @@ app.include_router(chaveamento_router)
 app.include_router(jurado_router)
 app.include_router(graduacao_router)
 app.include_router(pontuacao_router)
+app.include_router(categoria_router)
+app.include_router(user_router)

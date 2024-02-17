@@ -5,3 +5,6 @@ class JuradoInput(BaseModel):
 
 class StandardOutput(BaseModel):
     message: str
+
+class ErrorOutput(BaseModel):
+    message: str

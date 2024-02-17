@@ -32,6 +32,12 @@ Esta é a API da aplicação web para os jogos competitivos da Abadá-Capoeira C
 
 8. A aplicação estará disponível em `http://localhost:8000`.
 
+9. Para executar as migrations, primeiramente precisa gerar um script que lista as alterações realizadas com o seguinte comando: 
+   `alembic revision --autogenerate -m'comments about update'`
+
+   e depois para aplicar precisa utilizar o seguinte comando:
+   `alembic upgrade head`
+
 ## Estrutura do Projeto
 
 - `src/`: Diretório principal do projeto, contendo todos os demais diretórios do projeto.
@@ -44,6 +50,7 @@ Esta é a API da aplicação web para os jogos competitivos da Abadá-Capoeira C
 - `src/database/init_db.py`: Configuração e inicialização da conexão com o banco de dados.
 - `src/tests`: Testes unitários da aplicação.
 - `.env`: Arquivo contendo as credenciais para o banco de dados.
+- `migrations`: Definição das versões atualizadas dos models
 
 ## Licença
 

@@ -7,8 +7,8 @@ from fastapi import status
 pontuacao_router = APIRouter(prefix='/pontuacao')
 
 
-@pontuacao_router.post('/fechar_jogo')
-async def fechar_jogo(request: dict):
+@pontuacao_router.post('/insert_pontuacao')
+async def insert_pontuacao(request: dict):
     pontuacao_competidor_1 = float(request["pontuacao_competidor_1"])
     pontuacao_competidor_2 = float(request["pontuacao_competidor_2"])
     pontuacao_jogo = float(request["pontuacao_jogo"])
@@ -30,8 +30,8 @@ async def fechar_jogo(request: dict):
 #     id_jogo = Column('id_jogo', UUID(), ForeignKey('Jogos.id', ondelete='CASCADE'))
 
 
-@pontuacao_router.get('/fechar_jogo')
-async def fechar_jogo_get():
+@pontuacao_router.get('/get_pontuacao')
+async def get_pontuacao():
     return await Pontuacao().insert_jogo(nota="",
                                            jogo_valido=True,
                                            competidor_1=1,
