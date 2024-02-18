@@ -1,9 +1,9 @@
 import re
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, validator, Field
 
 class UserCreateInput(BaseModel):
-    username: str
-    password: str
+    username: str = Field(..., min_length=5, max_length=50, description='Username')
+    password: str = Field(..., min_length=5, max_length=20, description='Password')
 
     @validator('username')
     def validate_username(cls, value):

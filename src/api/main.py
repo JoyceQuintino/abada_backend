@@ -9,8 +9,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.views.PontuacaoView import pontuacao_router
 from src.views.UserView import user_router
 from uvicorn import run
+from src.core.config import settings
 
-app = FastAPI()
+app = FastAPI(
+    title=settings.PROJECT_NAME
+)
 router = APIRouter()
 
 origins = [

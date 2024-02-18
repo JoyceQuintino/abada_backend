@@ -3,13 +3,10 @@ from src.models.models import Users
 from fastapi.exceptions import HTTPException
 from src.database.db_connection import async_session
 from sqlalchemy.exc import IntegrityError
-from passlib.context import CryptContext
 from jose import jwt, JWTError
 from decouple import config
-
-SECRET_KEY = config('SECRET_KEY')
-ALGORITHM = config('ALGORITHM')
-crypt_context = CryptContext(schemes=['sha256_crypt'])
+from src.core.security import get_hash_password, verify_password
+from typing import Optional
 
 class UserService:
     async def create_user(username, password):
@@ -18,7 +15,7 @@ class UserService:
                 session.add(
                     Users(
                         username=username,
-                        password=crypt_context.hash(password)
+                        password=get_hash_password(password)
                     ))
                 await session.commit()
             except IntegrityError:
@@ -26,32 +23,25 @@ class UserService:
                     status_code=status.HTTP_400_BAD_REQUEST,
                     detail='User already exists'
                 )
-            
-    async def user_login(user: Users, expires_in: int = 30):
-        user_on_db = self.db_session.query(UserModel).filter_by(username=user.username).first()
 
-        if user_on_db is None:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail='Invalid username or password'
+    @staticmethod
+    async def get_user_by_username(username: str) -> Optional[Users]:
+        async with async_session() as session:
+            result = await session.execute(
+                Users.__table__.select().where(Users.username == username)
             )
+            user_on_db = result.fetchone()
+            return user_on_db
 
-        if not crypt_context.verify(user.password, user_on_db.password):
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail='Invalid username or password'
-            )
+    @staticmethod
+    async def authenticate(username: str, password: str) -> Optional[Users]:
+        user = await UserService.get_user_by_username(username=username)
+        if not user:
+            return None
         
-        exp = datetime.utcnow() + timedelta(minutes=expires_in) 
-
-        payload = {
-            'sub': user.username,
-            'exp': exp
-        }
-
-        access_token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM) 
-
-        return {
-            'access_token': access_token,
-            'exp': exp.isoformat()
-        }
+        if not verify_password(
+            password=password,
+            hashed_password=user.password
+        ):
+            return None
+        return user
