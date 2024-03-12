@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from sqlalchemy import select
 from src.models.models import Users
 from fastapi.exceptions import HTTPException
 from src.database.db_connection import async_session
@@ -7,6 +8,7 @@ from jose import jwt, JWTError
 from decouple import config
 from src.core.security import get_hash_password, verify_password
 from typing import Optional
+from uuid import UUID
 
 class UserService:
     async def create_user(username, password):
@@ -27,10 +29,17 @@ class UserService:
     @staticmethod
     async def get_user_by_username(username: str) -> Optional[Users]:
         async with async_session() as session:
-            result = await session.execute(
-                Users.__table__.select().where(Users.username == username)
-            )
-            user_on_db = result.fetchone()
+            result = await session.execute(select(Users).filter(Users.username == username))
+            user_on_db = result.scalar()
+            return user_on_db
+
+    @staticmethod
+    async def get_user_by_id(user_id: UUID) -> Optional[Users]:
+        print("Entrei aqui")
+        async with async_session() as session:
+            result = await session.execute(select(Users).filter(Users.id == user_id))
+            user_on_db = result.scalar()
+            print("Usuário - ", user_on_db)
             return user_on_db
 
     @staticmethod

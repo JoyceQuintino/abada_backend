@@ -1,7 +1,8 @@
 import re
 from pydantic import BaseModel, validator, Field
+from uuid import UUID
 
-class UserCreateInput(BaseModel):
+class UserInput(BaseModel):
     username: str = Field(..., min_length=5, max_length=50, description='Username')
     password: str = Field(..., min_length=5, max_length=20, description='Password')
 
@@ -16,3 +17,11 @@ class StandardOutput(BaseModel):
 
 class ErrorOutput(BaseModel):
     detail: str
+
+class UserDetail(BaseModel):
+    user_id: UUID
+    username: str
+
+class TokenSchema(BaseModel):
+    access_token: str
+    refresh_token: str
