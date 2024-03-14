@@ -8,7 +8,7 @@ class UserInput(BaseModel):
 
     @validator('username')
     def validate_username(cls, value):
-        if not re.match('^([a-z]|[A-Z]|[0-9]|@)+$', value):
+        if not re.match('^([a-zA-Z0-9@ ])+$', value):
             raise ValueError('Username format invalid')
         return value
 
