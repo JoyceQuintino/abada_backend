@@ -12,7 +12,7 @@ from src.core.security import create_access_token, create_refresh_token
 from src.api.dependencies.user_deps import get_current_user
 from src.schemas.UserSchema import UserDetail
 
-user_router = APIRouter(prefix='/user')
+user_router = APIRouter(prefix='/user', tags=['Usuário'])
 assets_router = APIRouter(prefix='/assets')
 
 @user_router.post('/create_user', response_model=UserSchema.StandardOutput, responses={400: {'model': UserSchema.ErrorOutput}})

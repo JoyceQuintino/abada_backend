@@ -6,7 +6,6 @@ from src.models.models import Competidores, Filiacoes, Graduacoes, Modalidades, 
 from src.database.db_connection import async_session 
 from sqlalchemy.future import select
 from sqlalchemy.orm import lazyload
-from src.services.JuradoService import JuradoService
 
 def get_data_to_insert():
         competidores = pd.read_csv('database-teste.csv')

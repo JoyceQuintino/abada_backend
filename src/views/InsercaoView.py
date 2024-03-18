@@ -4,7 +4,7 @@ from src.services.InsertDataService import InsertDataService
 from src.services.GraduacaoService import GraduacaoService
 from src.services.CompetidorService import CompeditorService
 
-insert_router = APIRouter(prefix='/insert')
+insert_router = APIRouter(prefix='/insert', tags=['Inserções de Dados'])
 assets_router = APIRouter(prefix='/assets')
 
 

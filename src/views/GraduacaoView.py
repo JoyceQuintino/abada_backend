@@ -2,7 +2,7 @@ from fastapi import APIRouter
 
 from src.services.GraduacaoService import GraduacaoService
 
-graduacao_router = APIRouter(prefix='/graduacao')
+graduacao_router = APIRouter(prefix='/graduacao', tags=['Graduação'])
 assets_router = APIRouter(prefix='/assets')
 
 @graduacao_router.get('/insert_graduacao')

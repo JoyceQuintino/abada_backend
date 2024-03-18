@@ -35,11 +35,9 @@ class UserService:
 
     @staticmethod
     async def get_user_by_id(user_id: UUID) -> Optional[Users]:
-        print("Entrei aqui")
         async with async_session() as session:
             result = await session.execute(select(Users).filter(Users.id == user_id))
             user_on_db = result.scalar()
-            print("Usuário - ", user_on_db)
             return user_on_db
 
     @staticmethod

@@ -2,7 +2,7 @@ from fastapi import APIRouter
 
 from src.services.CompetidorService import CompeditorService
 
-competidor_router = APIRouter(prefix='/competidor')
+competidor_router = APIRouter(prefix='/competidor', tags=['Competidores'])
 assets_router = APIRouter(prefix='/assets')
 
 @competidor_router.get('/get_all')

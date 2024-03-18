@@ -3,7 +3,7 @@ from starlette.responses import RedirectResponse
 from src.services.ChaveamentoService import ChaveamentoService
 from src.schemas.ChaveamentoSchema import ChaveamentoInput
 
-chaveamento_router = APIRouter(prefix='/chaveamento')
+chaveamento_router = APIRouter(prefix='/chaveamento', tags=['Chaveamento'])
 assets_router = APIRouter(prefix='/assets')
 
 @chaveamento_router.get('/')

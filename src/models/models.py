@@ -33,14 +33,12 @@ class Categorias(Base):
     id =  id_column()
     nome = Column('nome', String, nullable=False, unique=True)
 
-
 class Graduacoes(Base):
     __tablename__ = 'Graduacoes'
     id =  id_column()
     nome = Column('nome', String, nullable=False, unique=True)
     id_categoria = Column('categoria_id', ForeignKey('Categorias.id', ondelete='CASCADE'))
     categoria = relationship("Categorias", foreign_keys=id_categoria)
-
 
 class Filiacoes(Base):
     __tablename__ = 'Filiacoes'
@@ -49,7 +47,6 @@ class Filiacoes(Base):
     tipo = Column('tipo', String, nullable=False)
     id_graduacao = Column('id_graduacao', UUID(), ForeignKey('Graduacoes.id', ondelete='CASCADE'))
     graduacao = relationship("Graduacoes", foreign_keys=id_graduacao)
-
 
 class Competidores(Base):
     __tablename__ = 'Competidores'
@@ -67,7 +64,6 @@ class Competidores(Base):
     filiacao = relationship("Filiacoes", foreign_keys=id_filiacao)
     graduacao = relationship("Graduacoes", foreign_keys=id_graduacao)
 
-
 class Jogos(Base):
     __tablename__ = 'Jogos'
     id =  id_column()
@@ -81,12 +77,10 @@ class Jogos(Base):
     modalidade = relationship("Modalidades", foreign_keys=id_modalidade)
     categoria = relationship("Categorias", foreign_keys=id_categoria)
 
-
 class Modalidades(Base):
     __tablename__ = 'Modalidades'
     id =  id_column()
     nome = Column('nome', String, nullable=False, unique=True)
-
 
 class Pontuacoes(Base):
     __tablename__ = 'Pontuacoes'
@@ -98,10 +92,3 @@ class Pontuacoes(Base):
     id_jogo = Column('id_jogo', UUID(), ForeignKey('Jogos.id', ondelete='CASCADE'))
     user = relationship("Users", foreign_keys=id_user)
     jogo = relationship("Jogos", foreign_keys=id_jogo)
-
-
-class Jurados(Base):
-    __tablename__ = 'Jurados'
-    id =  id_column()
-    nome = Column('nome', String, nullable=False, unique=True)
-    

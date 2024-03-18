@@ -1,6 +1,6 @@
 import random
 from typing import List, Optional
-from src.models.models import Jogos, Competidores, Modalidades, Pontuacoes, Jurados, Categorias
+from src.models.models import Jogos, Competidores, Modalidades, Pontuacoes, Categorias
 
 class Utils:
 
@@ -38,7 +38,6 @@ class Utils:
 
     @staticmethod
     def round_robin(players: List, genero: str, modalidades: List, categoria: str):
-        # print(players)
         chaves = {}
         jogos = []
         
@@ -66,33 +65,3 @@ class Utils:
             chaves[f'{modalidades[i].nome}'] = rodada
             players.insert(1, players.pop())
         return (chaves, jogos)
-        # if len(players) % 2 != 0:
-        #     players.append(None)
-        # num_rounds = len(players) - 1
-        # matches = []
-        # for _ in range(num_rounds):
-        #     round_matches = []
-        #     for i in range(len(players) // 2):
-        #         # print(f'{players[i]} - {players[-i-1]}')
-        #         if players[i] is not None and players[-i - 1] is not None:
-        #             match = Jogos(id_competidor_1=players[i].id, id_competidor_2=players[(-i - 1)].id, id_modalidade="0acab9fd-e689-447f-8e05-539cd6b1acce", id_categoria="6da9cb61-8a1f-48f9-9c42-545a0ff32a94")
-        #             # match = [players[i], players[-i - 1]]
-        #             round_matches.append(match)
-        #     players.insert(1, players.pop())
-        #     matches.append(round_matches)
-        # return matches
-        # print(players)
-        # if len(players) % 2 != 0:
-        #     players.append(None)
-        # num_rounds = len(players) - 1
-        # matches = []
-        # for _ in range(num_rounds):
-        #     round_matches = []
-        #     for i in range(len(players) // 2):
-        #         if players[i] is not None and players[-i - 1] is not None:
-        #             match = [players[i], players[(-i - 1)]]
-        #             round_matches.append(match)
-        #     players.insert(1, players.pop())
-        #     matches.append(round_matches)
-        #     # print(round_matches.)
-        # return matches
