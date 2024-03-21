@@ -5,5 +5,6 @@ from dataclasses import dataclass
 
 
 class ChaveamentoInput(BaseModel):
-    categoria: str = Field(title="Categoria",
+    categoria: List[str] = Field(title="Categoria",
                            description="Categoria que será feita o chaveamento")
+    token: Optional[str] = None

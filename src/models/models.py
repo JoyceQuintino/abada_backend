@@ -64,6 +64,22 @@ class Competidores(Base):
     filiacao = relationship("Filiacoes", foreign_keys=id_filiacao)
     graduacao = relationship("Graduacoes", foreign_keys=id_graduacao)
 
+    def to_dict(self):
+        return {
+            "id": str(self.id),  # Convertendo UUID para string
+            "nome": self.nome,
+            "apelido": self.apelido,
+            "numero": self.numero,
+            "cidade": self.cidade,
+            "estado": self.estado,
+            "sexo": self.sexo,
+            "idade": self.idade,
+            "foto_url": self.foto_url,
+            "id_filiacao": str(self.id_filiacao),  # Convertendo UUID para string
+            "id_graduacao": str(self.id_graduacao),  # Convertendo UUID para string
+            # Adicione outros atributos aqui, se necessário
+        }
+
 class Jogos(Base):
     __tablename__ = 'Jogos'
     id =  id_column()
@@ -76,6 +92,17 @@ class Jogos(Base):
     competidor_2 = relationship("Competidores", foreign_keys=[id_competidor_2])
     modalidade = relationship("Modalidades", foreign_keys=id_modalidade)
     categoria = relationship("Categorias", foreign_keys=id_categoria)
+
+    def to_dict(self):
+        return {
+            "id": str(self.id),  # Convertendo UUID para string
+            "jogo_valido": self.jogo_valido,
+            "id_competidor_1": str(self.id_competidor_1),  # Convertendo UUID para string
+            "id_competidor_2": str(self.id_competidor_2),  # Convertendo UUID para string
+            "id_modalidade": str(self.id_modalidade),  # Convertendo UUID para string
+            "id_categoria": str(self.id_categoria)  # Convertendo UUID para string
+            # Adicione outros atributos aqui, se necessário
+        }
 
 class Modalidades(Base):
     __tablename__ = 'Modalidades'
