@@ -49,29 +49,33 @@ class Utils:
 
         if not categoria_obj:
             raise ValueError(f"A categoria '{categoria}' não foi encontrada.")
-        
+
         if len(players) < 4:
             if len(players) == 0:
                 players.append(Competidores(nome="", apelido="", cidade="", estado="", id_graduacao=""))
             else:
                 players.append(Competidores(nome="Nulo", apelido="Nulo", cidade="Nulo", estado="Nulo", id_graduacao=players[0].id_graduacao))
-        for i in range(len(players) - 1):
-            rodada = {}
-            if (modalidades[i].nome == "siriuna") and (categoria == "laranja-laranja-azul"):
+    
+        for modalidade in modalidades:
+            if categoria == "laranja-laranja-azul" and modalidade.nome == "siriuna":
                 continue
-            for j in range(len(players)//2):
+            rodada = {}
+            for j in range(len(players) // 2):
                 jogo = Jogos(id_competidor_1=players[j].id,
-                    id_competidor_2=players[-j-1].id,
-                    modalidade=modalidades[i],
-                    categoria=categoria_obj)
+                         id_competidor_2=players[-j-1].id,
+                         modalidade=modalidade,
+                         categoria=categoria_obj)
                 rodada[f'jogo_{j+1}'] = jogo
                 jogos.append(rodada[f'jogo_{j+1}'])
-            
-            if genero == FEMININO:
-                chaves[GENERO] = 'Feminino'
-            else:
-                chaves[GENERO] = 'Masculino'
 
-            chaves[f'{modalidades[i].nome}'] = []
+            if jogos:
+                if genero == FEMININO:
+                    chaves[GENERO] = 'Feminino'
+                else:
+                    chaves[GENERO] = 'Masculino'
+            
+                chaves[f'{modalidade.nome}'] = []
+
             players.insert(1, players.pop())
+
         return (chaves, jogos)

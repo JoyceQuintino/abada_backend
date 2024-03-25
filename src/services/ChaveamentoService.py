@@ -63,11 +63,13 @@ class ChaveamentoService:
 
                     for jogo in jogos_fem_serialized:
                         modalidade = jogo["modalidade"]["nome"]
-                        chaves_fem[modalidade].append(jogo)
+                        if jogos_fem_serialized:
+                            chaves_fem[modalidade].append(jogo)
 
                     for jogo in jogos_masc_serialized:
                         modalidade = jogo["modalidade"]["nome"]
-                        chaves_masc[modalidade].append(jogo)
+                        if jogos_masc_serialized:
+                            chaves_masc[modalidade].append(jogo)
 
                     chaveamento = {
                         "categoria": categoria,
