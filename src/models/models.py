@@ -66,7 +66,7 @@ class Competidores(Base):
 
     def to_dict(self):
         return {
-            "id": str(self.id),  # Convertendo UUID para string
+            "id": str(self.id),
             "nome": self.nome,
             "apelido": self.apelido,
             "numero": self.numero,
@@ -75,9 +75,8 @@ class Competidores(Base):
             "sexo": self.sexo,
             "idade": self.idade,
             "foto_url": self.foto_url,
-            "id_filiacao": str(self.id_filiacao),  # Convertendo UUID para string
-            "id_graduacao": str(self.id_graduacao),  # Convertendo UUID para string
-            # Adicione outros atributos aqui, se necessário
+            "id_filiacao": str(self.id_filiacao), 
+            "id_graduacao": str(self.id_graduacao),  
         }
 
 class Jogos(Base):
@@ -95,13 +94,20 @@ class Jogos(Base):
 
     def to_dict(self):
         return {
-            "id": str(self.id),  # Convertendo UUID para string
-            "jogo_valido": self.jogo_valido,
-            "id_competidor_1": str(self.id_competidor_1),  # Convertendo UUID para string
-            "id_competidor_2": str(self.id_competidor_2),  # Convertendo UUID para string
-            "id_modalidade": str(self.id_modalidade),  # Convertendo UUID para string
-            "id_categoria": str(self.id_categoria)  # Convertendo UUID para string
-            # Adicione outros atributos aqui, se necessário
+            'id': str(self.id),
+            'jogo_valido': self.jogo_valido,
+            'competidor_1': str(self.id_competidor_1),
+            'competidor_2': str(self.id_competidor_2),
+            'id_modalidade': str(self.id_modalidade),
+            'modalidade': {  
+                'id': str(self.modalidade.id),
+                'nome': self.modalidade.nome
+            },
+            'id_categoria': str(self.id_categoria),
+            'categoria': {
+                'id': str(self.categoria.id),
+                'nome': self.categoria.nome 
+            }
         }
 
 class Modalidades(Base):

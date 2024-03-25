@@ -1,7 +1,11 @@
 import random
 from typing import List, Optional
+import json
+from sqlalchemy.future import select
 from src.models.models import Jogos, Competidores, Modalidades, Pontuacoes, Categorias
 
+FEMININO = 'F'
+GENERO = 'genero'
 class Utils:
 
     @staticmethod
@@ -14,7 +18,6 @@ class Utils:
             else:
                 masc.append(player)
         return (fem, masc)
-
 
     @staticmethod
     def divide_players(players):
@@ -35,11 +38,17 @@ class Utils:
             divided_players.append(group)
         return divided_players
 
-
     @staticmethod
-    def round_robin(players: List, genero: str, modalidades: List, categoria: str):
+    async def round_robin(players: List, genero: str, modalidades: List, categoria: str, session):
         chaves = {}
         jogos = []
+
+        categoria_obj = None
+        result = await session.execute(select(Categorias).filter_by(nome=categoria))
+        categoria_obj = result.scalar()
+
+        if not categoria_obj:
+            raise ValueError(f"A categoria '{categoria}' não foi encontrada.")
         
         if len(players) < 4:
             if len(players) == 0:
@@ -53,15 +62,16 @@ class Utils:
             for j in range(len(players)//2):
                 jogo = Jogos(id_competidor_1=players[j].id,
                     id_competidor_2=players[-j-1].id,
-                    modalidade=modalidades[i])
+                    modalidade=modalidades[i],
+                    categoria=categoria_obj)
                 rodada[f'jogo_{j+1}'] = jogo
                 jogos.append(rodada[f'jogo_{j+1}'])
             
-            if genero == 'F':
-                chaves['genero'] = 'Feminino'
+            if genero == FEMININO:
+                chaves[GENERO] = 'Feminino'
             else:
-                chaves['genero'] = 'Masculino'
+                chaves[GENERO] = 'Masculino'
 
-            chaves[f'{modalidades[i].nome}'] = rodada
+            chaves[f'{modalidades[i].nome}'] = []
             players.insert(1, players.pop())
         return (chaves, jogos)

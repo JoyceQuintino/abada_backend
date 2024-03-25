@@ -39,6 +39,8 @@ async def login(data: UserSchema.UserInput) -> Any:
         )
     
     return {
+        'user_id': user.id,
+        'username': user.username,
         'access_token': create_access_token(user.id),
         'refresh_token': create_refresh_token(user.id)
     }
