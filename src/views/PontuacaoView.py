@@ -43,51 +43,58 @@ async def notas_pontuacao():
     async with async_session() as session:
         query = text("""
         SELECT
-            c.nome AS nome_competidor,
+            c.apelido AS competidor,
+	        c.sexo AS sexo,
+            ca.nome AS categoria,
             p.id_competidor,
             SUM(p.nota_total_jogo) AS total_jogo,
             SUM(p.nota_total_competidor) AS total_competidor,
             SUM(p.nota_geral_competidor) AS nota_total
         FROM (
             SELECT
-                id_jogo,
                 id_competidor,
-                nota_total_competidor,
-                nota_total_jogo,
-                nota_geral_competidor
+                id_categoria,
+                SUM(nota_total_jogo) AS nota_total_jogo,
+                SUM(nota_total_competidor) AS nota_total_competidor,
+                SUM(nota_total_competidor + nota_total_jogo) AS nota_geral_competidor
             FROM (
                 SELECT
-                    j.id AS id_jogo,
                     j.id_competidor_1 AS id_competidor,
+                    j.id_categoria,
                     SUM(p.pontuacao_jogo) AS nota_total_jogo,
-                    SUM(p.pontuacao_competidor_1) AS nota_total_competidor,
-                    SUM(p.pontuacao_competidor_1 + p.pontuacao_jogo) AS nota_geral_competidor
+                    SUM(p.pontuacao_competidor_1) AS nota_total_competidor
                 FROM
-                    "Jogos" j
+                "Jogos" j
                 JOIN
-                    "Pontuacoes" p ON p.id_jogo = j.id
-                GROUP BY
-                    j.id, j.id_competidor_1
+                "Pontuacoes" p ON p.id_jogo = j.id
+            GROUP BY
+                j.id_competidor_1, j.id_categoria
 
-                UNION ALL
+        UNION ALL
 
-                SELECT
-                    j.id AS id_jogo,
-                    j.id_competidor_2 AS id_competidor,
-                    SUM(p.pontuacao_jogo) AS nota_total_jogo,
-                    SUM(p.pontuacao_competidor_2) AS nota_total_competidor,
-                    SUM(p.pontuacao_competidor_2 + p.pontuacao_jogo) AS nota_geral_competidor
-                FROM
-                    "Jogos" j
-                JOIN
-                    "Pontuacoes" p ON p.id_jogo = j.id
-                GROUP BY
-                    j.id, j.id_competidor_2
-            ) AS notas_por_jogo
-        ) AS p
-        JOIN "Competidores" c ON c.id = p.id_competidor
+        SELECT
+            j.id_competidor_2 AS id_competidor,
+            j.id_categoria,
+            SUM(p.pontuacao_jogo) AS nota_total_jogo,
+            SUM(p.pontuacao_competidor_2) AS nota_total_competidor
+        FROM
+			"Jogos" j
+        JOIN
+            "Pontuacoes" p ON p.id_jogo = j.id
         GROUP BY
-            c.nome, p.id_competidor;
+            j.id_competidor_2, j.id_categoria
+        ) AS notas_por_jogo
+        GROUP BY
+            id_competidor, id_categoria
+        ) AS p
+        JOIN
+        "Competidores" c ON c.id = p.id_competidor
+        JOIN
+        "Categorias" ca ON ca.id = p.id_categoria
+        GROUP BY
+            c.apelido, ca.nome, c.sexo, p.id_competidor
+        ORDER BY
+            ca.nome, nota_total DESC, c.apelido;
         """)
 
         result = await session.execute(query)
@@ -95,16 +102,17 @@ async def notas_pontuacao():
 
     for row in rows:
         notas_competidores.append({
-            "nome_competidor": row[0],
-            "id_competidor": str(row[1]),
-            "total_jogo": row[2],
-            "total_competidor": row[3],
-            "nota_total": row[4]
+            "competidor": row[0],
+            "sexo": row[1],
+            "categoria": row[2],
+            "id_competidor": str(row[3]),
+            "total_jogo": row[4],
+            "total_competidor": row[5],
+            "nota_total": row[6]
         })
 
     content = {
-        "message": "Notas de competidores",
-        "response": notas_competidores
+        "notas": notas_competidores
     }
 
     return JSONResponse(content=content)
