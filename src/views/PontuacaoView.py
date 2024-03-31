@@ -44,6 +44,7 @@ async def notas_pontuacao():
         query = text("""
         SELECT
             c.apelido AS competidor,
+            c.numero AS numero,
 	        c.sexo AS sexo,
             ca.nome AS categoria,
             p.id_competidor,
@@ -88,11 +89,11 @@ async def notas_pontuacao():
             id_competidor, id_categoria
         ) AS p
         JOIN
-        "Competidores" c ON c.id = p.id_competidor
+            "Competidores" c ON c.id = p.id_competidor
         JOIN
-        "Categorias" ca ON ca.id = p.id_categoria
+            "Categorias" ca ON ca.id = p.id_categoria
         GROUP BY
-            c.apelido, ca.nome, c.sexo, p.id_competidor
+            c.apelido, ca.nome, c.sexo, c.numero, p.id_competidor
         ORDER BY
             ca.nome, nota_total DESC, c.apelido;
         """)
@@ -103,12 +104,13 @@ async def notas_pontuacao():
     for row in rows:
         notas_competidores.append({
             "competidor": row[0],
-            "sexo": row[1],
-            "categoria": row[2],
-            "id_competidor": str(row[3]),
-            "total_jogo": row[4],
-            "total_competidor": row[5],
-            "nota_total": row[6]
+            "numero": row[1],
+            "sexo": row[2],
+            "categoria": row[3],
+            "id_competidor": str(row[4]),
+            "total_jogo": row[5],
+            "total_competidor": row[6],
+            "nota_total": row[7]
         })
 
     content = {

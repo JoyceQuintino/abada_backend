@@ -1,5 +1,6 @@
 import re
 from pydantic import BaseModel, validator, Field
+from typing import Optional
 from uuid import UUID
 
 class UserInput(BaseModel):
@@ -25,5 +26,6 @@ class UserDetail(BaseModel):
 class TokenSchema(BaseModel):
     user_id: UUID
     username: str
+    isAdmin: Optional[bool]
     access_token: str
     refresh_token: str
