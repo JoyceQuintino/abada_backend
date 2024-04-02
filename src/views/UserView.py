@@ -26,28 +26,29 @@ async def create_user(user: UserSchema.UserInput):
     except Exception as error:
         raise HTTPException(400, detail=str(error))
 
-@user_router.post('/login', response_model=UserSchema.TokenSchema )
+@user_router.post('/login', response_model=UserSchema.TokenSchema, responses={400: {'model': UserSchema.ErrorOutput}})
 async def login(data: UserSchema.UserInput) -> Any:
-    user = await UserService.authenticate(
-        username = data.username,
-        password = data.password
-    )
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail='Invalid username or password!'
+    try:
+        user = await UserService.authenticate(
+            username = data.username,
+            password = data.password
         )
 
-    isAdmin = user.username == "admin"
+        isAdmin = user.username == "admin"
     
-    return {
-        'user_id': user.id,
-        'username': user.username,
-        'isAdmin': isAdmin if isAdmin else False,  
-        'access_token': create_access_token(user.id),
-        'refresh_token': create_refresh_token(user.id)
-    }
-    
+        return {
+            'user_id': user.id,
+            'username': user.username,
+            'isAdmin': isAdmin if isAdmin else False,  
+            'access_token': create_access_token(user.id),
+            'refresh_token': create_refresh_token(user.id)
+        }
+    except Exception:
+        raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail='Invalid username or password!'
+            )
+
 @user_router.post('/test-token', summary='Token testing', response_model=UserDetail)
 async def test_token(user: Users = Depends(get_current_user)):
     return user
