@@ -82,11 +82,11 @@ class Competidores(Base):
 class Jogos(Base):
     __tablename__ = 'Jogos'
     id =  id_column()
-    jogo_valido = Column('jogo_valido', Integer, nullable=True)
     id_competidor_1 = Column('id_competidor_1', UUID(), ForeignKey('Competidores.id', ondelete='CASCADE'))
     id_competidor_2 = Column('id_competidor_2', UUID(), ForeignKey('Competidores.id', ondelete='CASCADE'))
     id_modalidade = Column('id_modalidade', UUID(), ForeignKey('Modalidades.id', ondelete='CASCADE'))
     id_categoria = Column('id_categoria', UUID(), ForeignKey('Categorias.id', ondelete='CASCADE'))
+    fase = Column('fase', Integer, nullable=False)
     competidor_1 = relationship("Competidores", foreign_keys=[id_competidor_1])
     competidor_2 = relationship("Competidores", foreign_keys=[id_competidor_2])
     modalidade = relationship("Modalidades", foreign_keys=id_modalidade)
@@ -95,7 +95,6 @@ class Jogos(Base):
     def to_dict(self):
         return {
             'id': str(self.id),
-            'jogo_valido': self.jogo_valido,
             'competidor_1': str(self.id_competidor_1),
             'competidor_2': str(self.id_competidor_2),
             'id_modalidade': str(self.id_modalidade),
@@ -107,7 +106,8 @@ class Jogos(Base):
             'categoria': {
                 'id': str(self.categoria.id),
                 'nome': self.categoria.nome 
-            }
+            },
+            'fase': self.fase
         }
 
 class Modalidades(Base):
@@ -121,7 +121,20 @@ class Pontuacoes(Base):
     pontuacao_competidor_1 = Column('pontuacao_competidor_1', Float, nullable=False)
     pontuacao_competidor_2 = Column('pontuacao_competidor_2', Float, nullable=False)
     pontuacao_jogo = Column('pontuacao_jogo', Float, nullable=False)
-    id_user = Column('id_user', UUID(), ForeignKey('Users.id', ondelete='CASCADE'))
     id_jogo = Column('id_jogo', UUID(), ForeignKey('Jogos.id', ondelete='CASCADE'))
-    user = relationship("Users", foreign_keys=id_user)
+    jogo_valido = Column('jogo_valido', Integer, nullable=False)
+    id_user = Column('id_user', UUID(), ForeignKey('Users.id', ondelete='CASCADE'))
     jogo = relationship("Jogos", foreign_keys=id_jogo)
+    user = relationship("Users", foreign_keys=id_user)
+
+class Ranking(Base):
+    __tablename__ = 'Ranking'
+    id = id_column()
+    apelido = Column('apelido', String, nullable=False, unique=True)
+    numero = Column('numero', Integer, nullable=False)
+    sexo = Column('sexo', String, nullable=True)
+    categoria = Column('categoria', String, nullable=False, unique=True)
+    id_competidor = Column('id_competidor', UUID(), nullable=False)
+    total_jogo = Column('total_jogo', Float, nullable=False)
+    total_competidor = Column('total_competidor', Float, nullable=False)
+    nota_total = Column('nota_total', Float, nullable=False)

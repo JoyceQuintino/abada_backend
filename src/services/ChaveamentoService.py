@@ -33,9 +33,7 @@ class ChaveamentoService:
         for categoria_input in categorias:
             async with async_session() as session:
                 nome_categoria = categoria_input.nome
-                modalidade_categoria = categoria_input.modalidade
-                quantidade_competidores = categoria_input.quantidade_competidores
-                fase_categoria = categoria_input.fase
+                modalidade_categoria = categoria_input.modalidades
 
                 result = await session.execute(select(Categorias).where(Categorias.nome == nome_categoria))
                 categoria_obj = result.scalars().all()[0]
@@ -50,41 +48,23 @@ class ChaveamentoService:
                     (comp_fem, comp_masc) = Utils.separate_by_sex(comps)
                     chaves_fem, chaves_masc = [],[]
                     jogos_fem, jogos_masc = [], []
-
-                    if modalidade_categoria == AMBOS:
+                    
+                    if modalidade_categoria['F'].genero == FEMININO and modalidade_categoria['F'].quantidade_competidores is not None:
                         chaves_fem, jogos_fem = await Utils.round_robin(players=comp_fem,
-                                                                        genero=modalidade_categoria,  # Aqui ajustamos o gênero
+                                                                        genero=FEMININO,
                                                                         modalidades=modalidades,
                                                                         categoria=nome_categoria,
+                                                                        quantidade_competidores=modalidade_categoria['F'].quantidade_competidores,
+                                                                        fase=modalidade_categoria['F'].fase,
                                                                         session=session)
-                        if(jogos_fem):
-                            chaves_fem[GENERO] = 'Feminino'
-                        
+                    if modalidade_categoria['M'].genero == MASCULINO and modalidade_categoria['M'].quantidade_competidores is not None:
                         chaves_masc, jogos_masc = await Utils.round_robin(players=comp_masc,
-                                                                          genero=modalidade_categoria,  # Aqui ajustamos o gênero
+                                                                          genero=MASCULINO,
                                                                           modalidades=modalidades,
                                                                           categoria=nome_categoria,
+                                                                          quantidade_competidores=modalidade_categoria['M'].quantidade_competidores,
+                                                                          fase=modalidade_categoria['M'].fase,
                                                                           session=session)
-                        if jogos_masc:
-                            chaves_masc[GENERO] = 'Masculino'
-
-                    elif modalidade_categoria == FEMININO:
-                        chaves_fem, jogos_fem = await Utils.round_robin(players=comp_fem,
-                                                                        genero=modalidade_categoria,  # Aqui ajustamos o gênero
-                                                                        modalidades=modalidades,
-                                                                        categoria=nome_categoria,
-                                                                        session=session)
-                        if(jogos_fem):
-                            chaves_fem[GENERO] = 'Feminino'
-                
-                    elif modalidade_categoria == MASCULINO:
-                        chaves_masc, jogos_masc = await Utils.round_robin(players=comp_masc,
-                                                                          genero=modalidade_categoria,  # Aqui ajustamos o gênero
-                                                                          modalidades=modalidades,
-                                                                          categoria=nome_categoria,
-                                                                          session=session)
-                        if jogos_masc:
-                            chaves_masc[GENERO] = 'Masculino'
                     
                     session.add_all(jogos_masc + jogos_fem)
                     result = await session.commit()

@@ -6,6 +6,8 @@ from src.models.models import Jogos, Competidores, Modalidades, Pontuacoes, Cate
 
 FEMININO = 'F'
 GENERO = 'genero'
+FASE = 'fase'
+
 class Utils:
 
     @staticmethod
@@ -39,7 +41,7 @@ class Utils:
         return divided_players
 
     @staticmethod
-    async def round_robin(players: List, genero: str, modalidades: List, categoria: str, session):
+    async def round_robin(players: List, genero: str, modalidades: List, categoria: str, quantidade_competidores: int, fase: int, session):
         chaves = {}
         jogos = []
         jogos_com_nulo = []
@@ -62,18 +64,41 @@ class Utils:
             if categoria == "laranja-laranja-azul" and modalidade.nome == "siriuna":
                 continue
             rodada = {}
-            for j in range(len(players) // 2):
-                id_competidor_1 = players[j].id
-                id_competidor_2 = players[-j-1].id
+            players = players[:quantidade_competidores]
 
-                jogo = Jogos(id_competidor_1=id_competidor_1,
-                             id_competidor_2=id_competidor_2,
-                             modalidade=modalidade,
-                             categoria=categoria_obj)
-                rodada[f'jogo_{j+1}'] = jogo
-                jogos.append(rodada[f'jogo_{j+1}'])
+            if fase > 1:
+                players.sort(key=lambda player: pontuacoes_fase_anterior.get(player.id, 0), reverse=True)
+
+            if categoria != "laranja-laranja-azul" or len(players) <= 4:
+                for j in range(0, len(players), 2):
+                    if j + 1 < len(players):
+                        id_competidor_1 = players[j].id
+                        id_competidor_2 = players[-j-1].id
+
+                        jogo = Jogos(id_competidor_1=id_competidor_1,
+                                 id_competidor_2=id_competidor_2,
+                                 modalidade=modalidade,
+                                 categoria=categoria_obj,
+                                 fase=fase)
+                        rodada[f'jogo_{j+1}'] = jogo
+                        jogos.append(rodada[f'jogo_{j+1}'])
+            else:
+                random.shuffle(players)
+                for j in range(0, len(players), 2):
+                    if j + 1 < len(players):
+                        id_competidor_1 = players[j].id
+                        id_competidor_2 = players[j + 1].id
+
+                        jogo = Jogos(id_competidor_1=id_competidor_1,
+                                 id_competidor_2=id_competidor_2,
+                                 modalidade=modalidade,
+                                 categoria=categoria_obj,
+                                 fase=fase)
+                        rodada[f'jogo_{j+1}'] = jogo
+                        jogos.append(rodada[f'jogo_{j+1}'])
         
             if jogos:
+                chaves[FASE] = fase
                 if genero == FEMININO:
                     chaves[GENERO] = 'Feminino'
                 else:
