@@ -86,7 +86,7 @@ class Jogos(Base):
     id_competidor_2 = Column('id_competidor_2', UUID(), ForeignKey('Competidores.id', ondelete='CASCADE'))
     id_modalidade = Column('id_modalidade', UUID(), ForeignKey('Modalidades.id', ondelete='CASCADE'))
     id_categoria = Column('id_categoria', UUID(), ForeignKey('Categorias.id', ondelete='CASCADE'))
-    fase = Column('fase', Integer, nullable=False)
+    fase = Column('fase', String, nullable=False)
     competidor_1 = relationship("Competidores", foreign_keys=[id_competidor_1])
     competidor_2 = relationship("Competidores", foreign_keys=[id_competidor_2])
     modalidade = relationship("Modalidades", foreign_keys=id_modalidade)
@@ -107,7 +107,7 @@ class Jogos(Base):
                 'id': str(self.categoria.id),
                 'nome': self.categoria.nome 
             },
-            'fase': self.fase
+            'fase': str(self.fase)
         }
 
 class Modalidades(Base):
@@ -134,7 +134,7 @@ class Ranking(Base):
     numero = Column('numero', Integer, nullable=False)
     sexo = Column('sexo', String, nullable=True)
     categoria = Column('categoria', String, nullable=False)
-    fase = Column('fase', Integer, nullable=False)
+    fase = Column('fase', String, nullable=False)
     id_competidor = Column('id_competidor', UUID(), nullable=False)
     total_jogo = Column('total_jogo', Float, nullable=False)
     total_competidor = Column('total_competidor', Float, nullable=False)

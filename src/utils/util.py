@@ -41,7 +41,7 @@ class Utils:
         return divided_players
 
     @staticmethod
-    async def round_robin(players: List, genero: str, modalidades: List, categoria: str, quantidade_competidores: int, fase: int, session):
+    async def round_robin(players: List, genero: str, modalidades: List, categoria: str, quantidade_competidores: int, fase: str, session):
         chaves = {}
         jogos = []
         jogos_com_nulo = []

@@ -158,13 +158,3 @@ async def notas_pontuacao():
         await session.close()
 
     return JSONResponse(content=content)
-
-# @pontuacao_router.post('/create_ranking', response_model=PontuacaoSchema.StandardOutput, responses={400: {'model': PontuacaoSchema.ErrorOutput}})
-# async def create_ranking(ranking: PontuacaoSchema.RankingInput):
-#     try:
-#         await PontuacaoService.create_ranking(
-#             ranking
-#         )
-#         return PontuacaoSchema.StandardOutput(message='Success')
-#     except Exception as error:
-#         raise HTTPException(400, detail=str(error))

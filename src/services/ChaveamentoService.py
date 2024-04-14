@@ -11,7 +11,6 @@ import os
 
 FEMININO = 'F'
 MASCULINO = 'M'
-AMBOS = 'All'
 GENERO = 'genero'
 class ChaveamentoService:
     @staticmethod
@@ -29,10 +28,28 @@ class ChaveamentoService:
     async def ordenar_jogadores_por_pontuacao(players: List, fase, session):
         players_empty = []
 
-        if fase != 1:
+        if fase == 'Final':
+            last_phase = await session.execute(select(Ranking.fase).order_by(Ranking.fase.desc()).limit(1))
+            last_phase = last_phase.scalars().first()
+
+            print("Fase anterior - ", last_phase)
+
+            players_all = await session.execute(select(Ranking).filter(Ranking.fase == last_phase))
+            player_scores = {player[0].id_competidor: player[0].nota_total for player in players_all}
+            players.sort(key=lambda player: player_scores.get(player.id, 0), reverse=True)
+            print("Jogadores ordenados após a ordenação:")
+            for player in players:
+                print(player.id)
+
+            if last_phase is None or len(players_all) == 0:
+                print("Não há pontuação na última fase pesquisada.")
+                return players_empty
+
+        elif int(fase) != 1:
             players_all = await session.execute(select(Ranking.fase).distinct())
-            fases_existentes = [row[0] for row in players_all]
-            fase_anterior = fase - 1
+            fases_existentes = [str(row[0]) for row in players_all]
+            print(fases_existentes)
+            fase_anterior = str(int(fase) - 1)
             if fase_anterior not in fases_existentes:
                 print(f'A fase anterior à fase {fase} não existe no ranking.')
                 return players_empty
