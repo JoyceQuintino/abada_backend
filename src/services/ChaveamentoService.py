@@ -1,7 +1,7 @@
 from sqlalchemy.future import select
 from src.utils.util import Utils
 from src.database.db_connection import async_session
-from src.models.models import Competidores, Jogos, Modalidades, Graduacoes, Categorias
+from src.models.models import Competidores, Jogos, Modalidades, Graduacoes, Categorias, Ranking
 from src.schemas.ChaveamentoSchema import ChaveamentoInput, CategoriaInput
 from fastapi import HTTPException
 from fastapi.responses import JSONResponse
@@ -24,6 +24,26 @@ class ChaveamentoService:
             return JSONResponse(content=data, status_code=200)
         else:
             raise HTTPException(status_code=404, detail="File not found")
+
+    @staticmethod
+    async def ordenar_jogadores_por_pontuacao(players: List, fase, session):
+        players_empty = []
+
+        if fase != 1:
+            players_all = await session.execute(select(Ranking.fase).distinct())
+            fases_existentes = [row[0] for row in players_all]
+            fase_anterior = fase - 1
+            if fase_anterior not in fases_existentes:
+                print(f'A fase anterior à fase {fase} não existe no ranking.')
+                return players_empty
+            else:
+                players_all = await session.execute(select(Ranking).filter(Ranking.fase == fase_anterior))
+                player_scores = {player[0].id_competidor: player[0].nota_total for player in players_all}
+                players.sort(key=lambda player: player_scores.get(player.id, 0), reverse=True)
+                print("Jogadores ordenados após a ordenação:")
+                for player in players:
+                    print(player.id)
+        return players
 
     @staticmethod
     async def chaveamento_categoria(categorias: List[CategoriaInput]):
@@ -50,6 +70,7 @@ class ChaveamentoService:
                     jogos_fem, jogos_masc = [], []
                     
                     if modalidade_categoria['F'].genero == FEMININO and modalidade_categoria['F'].quantidade_competidores is not None:
+                        comp_fem = await ChaveamentoService.ordenar_jogadores_por_pontuacao(comp_fem, modalidade_categoria['F'].fase, session)
                         chaves_fem, jogos_fem = await Utils.round_robin(players=comp_fem,
                                                                         genero=FEMININO,
                                                                         modalidades=modalidades,
@@ -58,6 +79,7 @@ class ChaveamentoService:
                                                                         fase=modalidade_categoria['F'].fase,
                                                                         session=session)
                     if modalidade_categoria['M'].genero == MASCULINO and modalidade_categoria['M'].quantidade_competidores is not None:
+                        comp_masc = await ChaveamentoService.ordenar_jogadores_por_pontuacao(comp_masc, modalidade_categoria['M'].fase, session)
                         chaves_masc, jogos_masc = await Utils.round_robin(players=comp_masc,
                                                                           genero=MASCULINO,
                                                                           modalidades=modalidades,

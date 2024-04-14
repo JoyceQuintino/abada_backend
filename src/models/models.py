@@ -130,10 +130,11 @@ class Pontuacoes(Base):
 class Ranking(Base):
     __tablename__ = 'Ranking'
     id = id_column()
-    apelido = Column('apelido', String, nullable=False, unique=True)
+    apelido = Column('apelido', String, nullable=False)
     numero = Column('numero', Integer, nullable=False)
     sexo = Column('sexo', String, nullable=True)
-    categoria = Column('categoria', String, nullable=False, unique=True)
+    categoria = Column('categoria', String, nullable=False)
+    fase = Column('fase', Integer, nullable=False)
     id_competidor = Column('id_competidor', UUID(), nullable=False)
     total_jogo = Column('total_jogo', Float, nullable=False)
     total_competidor = Column('total_competidor', Float, nullable=False)

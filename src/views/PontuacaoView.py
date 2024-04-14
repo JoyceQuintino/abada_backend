@@ -3,7 +3,8 @@ import json
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import HTTPException
 from src.schemas import PontuacaoSchema
-from src.models.models import Pontuacoes
+from sqlalchemy import select
+from src.models.models import Pontuacoes, Ranking
 from src.database.db_connection import async_session
 import asyncpg
 from os import getenv
@@ -40,81 +41,130 @@ async def create_pontuacao(pontuacao: PontuacaoSchema.PontuacaoInput):
 async def notas_pontuacao():
     notas_competidores = []
 
-    async with async_session() as session:
-        query = text("""
-        SELECT
-            c.apelido AS competidor,
-            c.numero AS numero,
-	        c.sexo AS sexo,
-            ca.nome AS categoria,
-            p.id_competidor,
-            SUM(p.nota_total_jogo) AS total_jogo,
-            SUM(p.nota_total_competidor) AS total_competidor,
-            SUM(p.nota_geral_competidor) AS nota_total
-        FROM (
+    try:
+        async with async_session() as session:
+            query = text("""
             SELECT
-                id_competidor,
-                id_categoria,
-                SUM(nota_total_jogo) AS nota_total_jogo,
-                SUM(nota_total_competidor) AS nota_total_competidor,
-                SUM(nota_total_competidor + nota_total_jogo) AS nota_geral_competidor
+                c.apelido AS competidor,
+                c.numero AS numero,
+                c.sexo AS sexo,
+                ca.nome AS categoria,
+                fase,
+                p.id_competidor,
+                SUM(p.nota_total_jogo) AS total_jogo,
+                SUM(p.nota_total_competidor) AS total_competidor,
+                SUM(p.nota_geral_competidor) AS nota_total
             FROM (
                 SELECT
-                    j.id_competidor_1 AS id_competidor,
-                    j.id_categoria,
-                    SUM(p.pontuacao_jogo) AS nota_total_jogo,
-                    SUM(p.pontuacao_competidor_1) AS nota_total_competidor
-                FROM
+                    id_competidor,
+                    id_categoria,
+                    fase,
+                    SUM(nota_total_jogo) AS nota_total_jogo,
+                    SUM(nota_total_competidor) AS nota_total_competidor,
+                    SUM(nota_total_competidor + nota_total_jogo) AS nota_geral_competidor
+                FROM (
+                    SELECT
+                        j.id_competidor_1 AS id_competidor,
+                        j.id_categoria,
+                        j.fase,
+                        SUM(p.pontuacao_jogo) AS nota_total_jogo,
+                        SUM(p.pontuacao_competidor_1) AS nota_total_competidor
+                    FROM
+                    "Jogos" j
+                    JOIN
+                    "Pontuacoes" p ON p.id_jogo = j.id
+                GROUP BY
+                    j.id_competidor_1, j.id_categoria, j.fase, p.id_jogo
+                HAVING
+                    COUNT(p.pontuacao_jogo) = 3
+
+            UNION ALL
+
+            SELECT
+                j.id_competidor_2 AS id_competidor,
+                j.id_categoria,
+                j.fase,
+                SUM(p.pontuacao_jogo) AS nota_total_jogo,
+                SUM(p.pontuacao_competidor_2) AS nota_total_competidor
+            FROM
                 "Jogos" j
-                JOIN
+            JOIN
                 "Pontuacoes" p ON p.id_jogo = j.id
             GROUP BY
-                j.id_competidor_1, j.id_categoria
+                j.id_competidor_2, j.id_categoria, j.fase, p.id_jogo
+            HAVING
+                COUNT(p.pontuacao_jogo) = 3
+            ) AS notas_por_jogo
+            GROUP BY
+                id_competidor, id_categoria, fase
+            ) AS p
+            JOIN
+                "Competidores" c ON c.id = p.id_competidor
+            JOIN
+                "Categorias" ca ON ca.id = p.id_categoria
+            GROUP BY
+                c.apelido, ca.nome, c.sexo, c.numero, p.id_competidor, fase
+            ORDER BY
+                ca.nome, nota_total DESC, c.apelido;
+            """)
 
-        UNION ALL
+            result = await session.execute(query)
+            competidores = result.fetchall()
 
-        SELECT
-            j.id_competidor_2 AS id_competidor,
-            j.id_categoria,
-            SUM(p.pontuacao_jogo) AS nota_total_jogo,
-            SUM(p.pontuacao_competidor_2) AS nota_total_competidor
-        FROM
-			"Jogos" j
-        JOIN
-            "Pontuacoes" p ON p.id_jogo = j.id
-        GROUP BY
-            j.id_competidor_2, j.id_categoria
-        ) AS notas_por_jogo
-        GROUP BY
-            id_competidor, id_categoria
-        ) AS p
-        JOIN
-            "Competidores" c ON c.id = p.id_competidor
-        JOIN
-            "Categorias" ca ON ca.id = p.id_categoria
-        GROUP BY
-            c.apelido, ca.nome, c.sexo, c.numero, p.id_competidor
-        ORDER BY
-            ca.nome, nota_total DESC, c.apelido;
-        """)
+        for row in competidores:
+            notas_competidores.append({
+                "competidor": row[0],
+                "numero": row[1],
+                "sexo": row[2],
+                "categoria": row[3],
+                "fase": row[4],
+                "id_competidor": str(row[5]),
+                "total_jogo": row[6],
+                "total_competidor": row[7],
+                "nota_total": row[8]
+            })
 
-        result = await session.execute(query)
-        rows = result.fetchall()
+        content = {
+            "notas": notas_competidores
+        }
 
-    for row in rows:
-        notas_competidores.append({
-            "competidor": row[0],
-            "numero": row[1],
-            "sexo": row[2],
-            "categoria": row[3],
-            "id_competidor": str(row[4]),
-            "total_jogo": row[5],
-            "total_competidor": row[6],
-            "nota_total": row[7]
-        })
+        for nota in notas_competidores:
+            existing_ranking = await session.execute(
+                select(Ranking).where(
+                    (Ranking.fase == nota["fase"]) & (Ranking.id_competidor == nota["id_competidor"])
+                )
+            )
+            existing_ranking = existing_ranking.scalar_one_or_none()
 
-    content = {
-        "notas": notas_competidores
-    }
+            if existing_ranking is not None:
+                continue 
+
+            new_ranking = Ranking(
+                apelido=nota["competidor"],
+                numero=nota["numero"],
+                sexo=nota["sexo"],
+                categoria=nota["categoria"],
+                fase=nota["fase"],
+                id_competidor=nota["id_competidor"],
+                total_jogo=nota["total_jogo"],
+                total_competidor=nota["total_competidor"],
+                nota_total=nota["nota_total"]
+            )
+            session.add(new_ranking)
+
+        await session.commit()
+    
+    finally:
+        await session.close()
 
     return JSONResponse(content=content)
+
+# @pontuacao_router.post('/create_ranking', response_model=PontuacaoSchema.StandardOutput, responses={400: {'model': PontuacaoSchema.ErrorOutput}})
+# async def create_ranking(ranking: PontuacaoSchema.RankingInput):
+#     try:
+#         await PontuacaoService.create_ranking(
+#             ranking
+#         )
+#         return PontuacaoSchema.StandardOutput(message='Success')
+#     except Exception as error:
+#         raise HTTPException(400, detail=str(error))

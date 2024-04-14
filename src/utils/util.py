@@ -2,7 +2,7 @@ import random
 from typing import List, Optional
 import json
 from sqlalchemy.future import select
-from src.models.models import Jogos, Competidores, Modalidades, Pontuacoes, Categorias
+from src.models.models import Jogos, Competidores, Modalidades, Pontuacoes, Categorias, Ranking
 
 FEMININO = 'F'
 GENERO = 'genero'
@@ -65,9 +65,6 @@ class Utils:
                 continue
             rodada = {}
             players = players[:quantidade_competidores]
-
-            if fase > 1:
-                players.sort(key=lambda player: pontuacoes_fase_anterior.get(player.id, 0), reverse=True)
 
             if categoria != "laranja-laranja-azul" or len(players) <= 4:
                 for j in range(0, len(players), 2):
