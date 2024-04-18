@@ -76,7 +76,8 @@ class Utils:
                                  id_competidor_2=id_competidor_2,
                                  modalidade=modalidade,
                                  categoria=categoria_obj,
-                                 fase=fase)
+                                 fase=fase,
+                                 jogo_order=j+1)
                         rodada[f'jogo_{j+1}'] = jogo
                         jogos.append(rodada[f'jogo_{j+1}'])
             else:
@@ -90,7 +91,8 @@ class Utils:
                                  id_competidor_2=id_competidor_2,
                                  modalidade=modalidade,
                                  categoria=categoria_obj,
-                                 fase=fase)
+                                 fase=fase,
+                                 jogo_order=j+1)
                         rodada[f'jogo_{j+1}'] = jogo
                         jogos.append(rodada[f'jogo_{j+1}'])
         

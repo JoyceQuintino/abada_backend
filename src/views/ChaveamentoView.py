@@ -52,7 +52,18 @@ async def get_all_players_by_step(fase: str):
 
     try:
         async with async_session() as session:
-            query = text(""" 
+            update_query = text("""
+                UPDATE "Jogos"
+                    SET jogo_order = CASE
+                        WHEN id_competidor_1 IS NOT NULL AND id_competidor_2 IS NOT NULL THEN 1
+                        WHEN id_competidor_1 IS NOT NULL AND id_competidor_2 IS NULL THEN 2
+                        ELSE 3
+                    END;
+                """)
+
+            await session.execute(update_query)
+
+            select_query = text(""" 
                 SELECT 
                     j.id AS jogo_id,
                     Competidores1.apelido AS competidor_1,
@@ -72,10 +83,11 @@ async def get_all_players_by_step(fase: str):
                     "Modalidades" m ON j.id_modalidade = m.id
                 JOIN
 	                "Categorias" c ON j.id_categoria = c.id
-                WHERE j.fase = :fase;
+                WHERE j.fase = :fase
+                ORDER BY m.nome, j.jogo_order;
             """)
 
-            result = await session.execute(query, {"fase": fase})
+            result = await session.execute(select_query, {"fase": fase})
             jogos_by_fase = result.fetchall()
 
         for row in jogos_by_fase:

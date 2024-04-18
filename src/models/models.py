@@ -87,6 +87,7 @@ class Jogos(Base):
     id_modalidade = Column('id_modalidade', UUID(), ForeignKey('Modalidades.id', ondelete='CASCADE'))
     id_categoria = Column('id_categoria', UUID(), ForeignKey('Categorias.id', ondelete='CASCADE'))
     fase = Column('fase', String, nullable=False)
+    jogo_order = Column('jogo_order', Integer, nullable=False)
     competidor_1 = relationship("Competidores", foreign_keys=[id_competidor_1])
     competidor_2 = relationship("Competidores", foreign_keys=[id_competidor_2])
     modalidade = relationship("Modalidades", foreign_keys=id_modalidade)
