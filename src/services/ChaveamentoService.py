@@ -6,6 +6,8 @@ from src.schemas.ChaveamentoSchema import ChaveamentoInput, CategoriaInput
 from fastapi import HTTPException
 from fastapi.responses import JSONResponse
 from typing import List
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
 import json
 import os
 
@@ -13,6 +15,31 @@ FEMININO = 'F'
 MASCULINO = 'M'
 GENERO = 'genero'
 class ChaveamentoService:
+    
+    @staticmethod
+    async def get_pdf_jogos(response):
+        print(response)
+        (w, h) = A4
+        c = canvas.Canvas("JOGOS.pdf", pagesize=A4)
+        text = c.beginText(w/20*5, h - 25)
+        text.setFont('Times-Roman', 24)
+        text.textLine(f'JOGOS NORDESTE FASE {response[0]["fase"]}')
+        c.drawText(text)
+        alt = h-100
+        for jogo in response:
+            text = c.beginText(50, alt)
+            text.setFont('Times-Roman', 12)
+            text.textLine(f'MODALIDADE: {jogo["modalidade_nome"]}')
+            text.textLine(f'CATEGORIA: {jogo["categoria_nome"]}')
+            text.textLine(f'JOGAM {jogo["apelido_competidor_1"]} - {jogo["numero_competidor_1"]} E {jogo["apelido_competidor_2"]} - {jogo["numero_competidor_2"]}')
+            alt -= 50
+            c.drawText(text)
+            if alt < 50:  # Adiciona uma nova página se o espaço restante for insuficiente
+                c.showPage()
+                alt = h - 50
+        c.save()
+        return "PDF gerado com sucesso!"
+    
     @staticmethod
     async def get_all_chaveamento():
         file_path = 'src/chaveamento_json/chaveamento.json'
