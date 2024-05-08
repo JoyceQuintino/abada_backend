@@ -34,7 +34,7 @@ async def login(data: UserSchema.UserInput) -> Any:
             password = data.password
         )
 
-        isAdmin = user.username == "admin"
+        isAdmin = user.username == "phteste"
     
         return {
             'user_id': user.id,

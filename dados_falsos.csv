@@ -1,0 +1,301 @@
+nome,apelido,numero,cidade,estado,sexo,idade,filiacao,graduacao
+Liam Barros,jose76,57,Pastor da Prata,Minas Gerais,F,29,Petroleiro,Vermelha-branca
+Ana Cecília Garcia,correiabarbara,938,Ribeiro,Pará,M,19,Perito criminal,Azul
+Caroline Costa,leaodavi-lucas,764,Freitas,Rio Grande do Norte,F,19,Co-piloto,Laranja
+Raquel Gonçalves,beatriz24,884,da Costa das Flores,Acre,F,82,Gestor de tecnologia da informação,Azul
+Ana Carolina Vieira,ecarvalho,793,Castro,Maranhão,F,62,Velejador,Vermelha-branca
+Ágatha Pinto,felipe74,762,Cassiano,Mato Grosso,F,90,Acupunturista,Azul
+Dr. Vitor Monteiro,anthony-gabriel92,230,da Mata,Paraíba,F,42,Modelo,Roxa-marrom
+Sr. Henry Machado,lpastor,171,Aragão do Sul,Piauí,F,36,Radialista,Vermelha-branca
+Rafael Cassiano,bernardodias,613,Ribeiro da Praia,Mato Grosso,F,62,Contramestre em transporte marítimo,Azul-verde
+Sr. Henry Gabriel Rezende,nogueiracarolina,509,Aragão,Roraima,F,39,Gandula,Marrom
+Marina Farias,gomesbeatriz,560,Fonseca do Amparo,Acre,F,46,Técnico em agropecuária,Marrom-vermelha
+Igor Cassiano,maria-julia37,137,Monteiro da Mata,Rondônia,M,36,Esgrimista,Roxa
+Francisco Cirino,barroslara,377,Freitas do Sul,Paraíba,M,74,Odontopediatra,Vermelha-branca
+Dra. Aylla da Costa,cavalcantebryan,742,da Cunha,Alagoas,M,86,Subprefeito,Marrom
+Melina Barros,fpereira,369,Costa Paulista,Alagoas,F,30,Procurador de justiça,Azul
+Lucas Gabriel Carvalho,calebe14,691,Leão Paulista,Espírito Santo,F,43,Veterinário,Verde
+Theo Ferreira,bryanrios,194,Garcia Alegre,Amapá,F,63,Apresentador,Azul-verde
+Isabela Albuquerque,hcamara,52,Cavalcante,São Paulo,M,67,Locutor,Verde-roxa
+Ana Luiza Pastor,imendes,446,Moreira das Pedras,São Paulo,F,63,Oficial de justiça,Marrom
+Thales Casa Grande,agatha00,17,da Mata de Vieira,Rio Grande do Norte,M,67,Jornaleiro,Branca
+Luara Borges,vitor-hugo50,478,Costa,Minas Gerais,M,61,Engenheiro têxtil,Laranja
+Maria Fernanda Ferreira,levicirino,169,Câmara de Vieira,Paraíba,M,62,Diagramador,Marrom
+Dr. Francisco Novaes,maysacarvalho,127,da Costa,Roraima,F,54,Otorrinolaringologista,Roxa-marrom
+Sabrina da Rocha,caldeiralavinia,572,Rezende da Serra,Ceará,F,71,Coronel,Vermelha
+Stephany Macedo,antonioramos,391,Sampaio da Prata,Rio Grande do Sul,F,64,Designer de produto ou desenhista industrial,Branca
+Gabriel da Conceição,hcarvalho,171,Jesus,Goiás,F,67,Inspetor,Laranja
+Srta. Maria Luísa Porto,abreuenzo-gabriel,430,Nascimento,Amapá,F,60,Toxicologista,Roxa
+Nicole Almeida,nunesrael,129,Vargas,Amapá,F,53,Endocrinologista,Vermelha
+Guilherme da Conceição,wmoraes,376,Correia de Sousa,Rio Grande do Norte,M,35,Geógrafo,Marrom-vermelha
+Bruna da Mata,ana-julia33,526,Oliveira,Sergipe,F,62,Cientista,Azul-verde
+Vitor Gabriel das Neves,da-conceicaoeduarda,756,da Luz de Goiás,Pernambuco,M,77,Pedreiro,Roxa-marrom
+Renan Mendonça,nina67,414,Sousa do Norte,Sergipe,M,42,Teólogo,Vermelha-branca
+Augusto Moreira,borgesmirella,76,Rodrigues Paulista,Ceará,F,73,Teólogo,Marrom-vermelha
+Davi Lucca Guerra,joao64,375,Azevedo,Rondônia,F,31,Cartógrafo,Laranja
+Oliver Moreira,ana-lizalbuquerque,424,Machado das Flores,Paraíba,F,78,Jogador de golfe,Roxa
+Gael Henrique Fonseca,da-rochacaua,762,Monteiro,Amapá,F,49,Gandula,Marrom
+Ryan da Rocha,aramos,902,Costa,Alagoas,F,48,Laboratorista,Branca
+Guilherme Rezende,daniela44,140,Casa Grande,São Paulo,M,35,Engenheiro de minas,Azul-verde
+Maria Aparecida,sarapereira,984,Nunes,Distrito Federal,F,50,Geógrafo,Azul
+Carlos Eduardo Lima,hsampaio,551,Moura,Minas Gerais,F,85,Major,Vermelha-branca
+Dra. Ana Carolina Alves,emanuella39,963,Macedo do Galho,Santa Catarina,F,73,Meteorologista,Azul-verde
+Sr. Kevin Albuquerque,nsilveira,560,Cardoso,Goiás,M,64,Encanador,Vermelha
+Caroline Azevedo,livia49,276,Casa Grande de Goiás,Amazonas,F,22,Acupunturista,Azul-verde
+Anthony Gabriel Pereira,luiz-gustavomoreira,470,Vasconcelos de Silva,Pernambuco,F,83,Peão de rodeiro,Roxa-marrom
+Ana Sá,cardosoarthur,340,da Cunha do Campo,São Paulo,F,42,Prefeito,Vermelha
+José Miguel Sá,kamilly26,162,da Mota,Alagoas,M,64,Quiropraxista,Azul
+Maria Alice da Mota,eloagarcia,558,Vieira de Sousa,Rondônia,M,52,Capoeirista,Vermelha-branca
+Maria Clara Vasconcelos,gbarbosa,612,Pimenta de Abreu,Mato Grosso do Sul,F,72,Cientista,Vermelha
+Alícia das Neves,luiz-henrique78,898,Guerra das Flores,Rondônia,F,59,Ilustrador,Marrom-vermelha
+Théo Campos,juliadias,713,Carvalho,Rio Grande do Norte,M,25,Comandante,Branca
+Enzo Gabriel Jesus,danielamoraes,831,Moraes Alegre,Bahia,M,58,Neonatologista,Vermelha-branca
+Liz Mendonça,duartedavi-luiz,908,Carvalho de Minas,Rio de Janeiro,F,74,Paisagista,Azul
+Lucas Gabriel Nunes,anna-liz91,960,Sampaio de Caldeira,Roraima,F,29,Percursionista,Branca
+João Pedro Abreu,dfogaca,72,Cassiano,Espírito Santo,M,51,Marcador de luz,Vermelha-branca
+Eloá Costa,benjamim24,618,Cavalcante de Minas,Rondônia,F,65,Produtor de multimídia,Laranja-azul
+Maya Ferreira,tabreu,696,Moura de Santos,São Paulo,F,35,Biotecnólogo,Vermelha
+Dra. Sara Fernandes,ysiqueira,330,Rios,Sergipe,M,38,Ministro,Vermelha
+Nathan da Cunha,ana-luizacaldeira,311,Mendes,Amapá,F,37,Camelô,Marrom-vermelha
+Júlia Freitas,qlopes,816,Novais da Mata,Tocantins,F,35,Infectologista,Azul-verde
+Rael Sales,leo91,375,Sales,Espírito Santo,F,50,Ortoptista,Laranja
+Ágatha Barbosa,nsa,506,da Mata do Oeste,Tocantins,F,84,Cozinheira,Vermelha-branca
+Ana Clara da Mota,heloisacaldeira,455,Ramos de Minas,Maranhão,M,43,Intérprete e tradutor de língua de sinais,Verde-roxa
+Diego Vargas,hsilveira,193,Rocha,Pernambuco,F,41,Profissional de manutenção industrial,Azul
+Fernanda Alves,ifreitas,168,Souza do Norte,Rondônia,M,85,Bartender,Azul-verde
+Sr. Lucas Gabriel Farias,rezendefrancisco,447,Duarte do Amparo,Espírito Santo,F,72,Clarinetista,Vermelha
+Dom Moura,hadassa86,882,Jesus,Pernambuco,M,44,Engenheiro mecatrônico,Vermelha-branca
+Carolina Castro,ejesus,181,Cavalcante,Ceará,F,40,Separador,Roxa
+Caio Nascimento,zcastro,253,Viana de Lima,Mato Grosso,F,65,Bombeiro,Branca
+Isabel Silveira,novaeslucca,285,Souza,Ceará,M,49,Carpinteiro,Azul-verde
+Gael Henrique Rezende,kaiqueda-rosa,167,da Paz das Flores,Espírito Santo,F,42,Mecanógrafo,Vermelha
+Emanuelly Marques,ecastro,235,Montenegro de Novais,Piauí,M,62,Perito judicial,Branca
+Olívia Aparecida,omartins,552,Freitas do Amparo,Distrito Federal,F,73,Fiscal,Azul-verde
+Vitória Azevedo,felipesampaio,919,Moraes de Garcia,Alagoas,F,87,Jornaleiro,Laranja
+Sr. Samuel Ribeiro,almeidafrancisco,882,Silveira de da Cunha,Ceará,F,25,Diretor de cinema,Laranja-azul
+Sabrina Rocha,laraujo,304,Pimenta Verde,Maranhão,F,52,Contador,Marrom-vermelha
+Esther Farias,fernandopeixoto,621,Castro,Rio Grande do Sul,F,88,Engenheiro sanitarista,Laranja-azul
+Ágatha Caldeira,alvesgustavo-henrique,115,Santos,Rio Grande do Sul,F,37,Broker/Corretor da bolsa de valores,Marrom
+Maria Laura Ferreira,benicio75,706,Farias de Novaes,Rondônia,F,45,Treinador,Vermelha
+Kamilly Ferreira,camargodante,256,Pastor das Flores,Rio Grande do Norte,F,47,Catador de material reciclável,Vermelha
+Clara Cassiano,sousaluiz-fernando,697,Cassiano de Goiás,Mato Grosso do Sul,F,28,Plastimodelista,Roxa-marrom
+Noah Sampaio,matheuspereira,224,Cunha,Ceará,F,59,Frentista,Vermelha
+Isis da Costa,brunarodrigues,700,Cassiano dos Dourados,Ceará,F,18,Mergulhador,Vermelha
+Luiz Fernando Cunha,sabrinapeixoto,263,Aragão de Macedo,São Paulo,F,40,Técnico em aviação,Vermelha-branca
+Sarah Pinto,julialopes,252,Novais do Amparo,Rio Grande do Norte,M,47,Educador,Azul-verde
+Hadassa Rios,oliveirabianca,930,Moura de Rodrigues,Rio Grande do Sul,F,73,Profissional de áudio,Laranja
+Maria Isis Alves,bellacavalcanti,630,Silveira,Acre,F,47,Estampador de tecidos,Marrom
+Arthur Carvalho,sarada-mata,621,Rodrigues do Norte,Espírito Santo,F,45,Psicopedagogo,Azul-verde
+Sra. Letícia Sales,camarabruna,990,da Conceição,Roraima,F,39,Moldureiro,Azul
+Gael Henrique Oliveira,xalves,45,Cunha de das Neves,Bahia,M,74,Agente de viagens,Marrom
+Theo Casa Grande,marcelo72,411,Brito da Mata,Acre,M,77,Zootecnista,Marrom-vermelha
+Maria Sophia Vargas,leandro15,983,Oliveira da Mata,Minas Gerais,F,29,Policial federal,Marrom-vermelha
+Sr. Rodrigo Câmara,gustavo-henriquesiqueira,343,Andrade,Roraima,F,49,Profissional de efeitos especiais,Marrom-vermelha
+Anthony Gabriel Garcia,alice37,416,Pimenta da Prata,Minas Gerais,F,36,Windsurfer,Roxa-marrom
+Maria Júlia Aragão,ianda-paz,693,Rezende,Mato Grosso,F,19,Degustador,Laranja
+Luiz Felipe da Costa,nicolecasa-grande,863,Melo das Flores,Ceará,F,60,Passador,Laranja-azul
+Ana Beatriz Camargo,stephanyvargas,948,Moura,Paraíba,F,74,Mecanógrafo,Marrom-vermelha
+Maria Luísa Monteiro,apollo85,622,Porto do Campo,Minas Gerais,F,42,Gerente de riscos em seguros,Marrom
+Otávio da Rosa,cavalcanteantonella,629,Cavalcante,Pará,M,71,Pedreiro,Azul
+Luísa Garcia,alvesevelyn,618,Siqueira de da Mota,Santa Catarina,M,85,Barbeiro,Roxa-marrom
+Maria Fernanda Silveira,evelynandrade,761,Cardoso,Santa Catarina,F,32,Engenheiro de horticultura,Verde
+Luiz Henrique Ramos,sousaana-beatriz,827,da Luz,Paraíba,F,74,Investigador de Polícia,Roxa-marrom
+Emanuella Barros,maria-juliapereira,641,Lopes das Flores,Rio Grande do Sul,F,74,Atleta de nado sincronizado,Marrom-vermelha
+Enzo Gabriel Brito,bernardodas-neves,191,Sampaio,Rio Grande do Sul,M,59,Moldador,Verde-roxa
+Maria Sophia das Neves,kfonseca,473,Costela,Piauí,F,60,Ilustrador,Azul-verde
+Sofia Casa Grande,auroracorreia,998,Lopes,Tocantins,F,26,Fotógrafo,Branca
+Marcela Câmara,bernardo22,596,Silva do Sul,Maranhão,F,76,Modelista,Marrom-vermelha
+Ryan Moura,camaracaua,849,Gonçalves,Distrito Federal,F,60,Supervisor,Verde
+Maria Fernanda da Rosa,isabela06,32,Ferreira de Goiás,Acre,M,37,Tecnólogo em geoprocessamento,Marrom-vermelha
+Dra. Luísa Fernandes,eduarda21,295,Nascimento,Minas Gerais,F,40,Empresário,Verde
+Maria Laura Guerra,vteixeira,504,Peixoto do Sul,São Paulo,F,60,Saxofonista,Azul
+Gustavo Henrique Melo,jcorreia,918,Cavalcante,Roraima,F,40,Marcador de luz,Vermelha
+Catarina Novais,davi-lucca53,3,Nogueira do Norte,Espírito Santo,F,74,Afiador de ferramentas,Verde
+Heitor Machado,portoheitor,695,Pacheco das Flores,Pernambuco,F,33,Escoteiro,Marrom-vermelha
+Isabelly Porto,cecilia98,487,Brito da Prata,Piauí,M,72,Perito criminal,Vermelha
+Ian Cunha,stella64,367,Pacheco,Minas Gerais,M,31,Biólogo,Vermelha-branca
+Maitê Cavalcanti,natalia11,193,Carvalho da Prata,São Paulo,M,89,Engenheiro agrônomo,Roxa-marrom
+Srta. Clara Azevedo,anthony-gabrielferreira,532,Silva,Rio Grande do Sul,F,37,Tintureiro,Marrom
+Stella da Mata,rmarques,850,Montenegro da Praia,Rio Grande do Sul,F,53,Assistente de produção,Azul-verde
+Helena Vasconcelos,henry-gabriel58,696,Rodrigues dos Dourados,Distrito Federal,F,36,Endodontista,Azul
+Erick Costa,joao-pedro10,67,Sampaio Grande,Roraima,F,42,Borracheiro,Branca
+João Pastor,bruno89,537,Siqueira,Rio de Janeiro,F,75,Atleta de nado sincronizado,Azul-verde
+Sr. Bento Abreu,sophiesiqueira,300,Vasconcelos,Paraíba,F,69,Corretor de imóveis,Roxa-marrom
+Larissa Lima,ana09,370,Nascimento do Campo,Distrito Federal,F,32,Porteiro,Vermelha
+Maria Vitória da Rosa,ljesus,872,Albuquerque de Goiás,Pernambuco,M,80,Vigilante noturno/diurno,Laranja-azul
+Cauê Melo,benjamim79,183,Ramos de Pacheco,Tocantins,M,54,Camelô,Azul-verde
+Maria Eduarda Campos,sabrina67,654,Rios,Rio Grande do Sul,M,50,Subprefeito,Laranja
+Gael Henrique Moraes,mlopes,290,Moura,Amazonas,F,31,Karateca,Vermelha
+Benicio Leão,josecarvalho,462,Lopes,Acre,M,65,Moleiro,Laranja
+Enrico das Neves,calebe74,313,Pacheco de Aragão,Distrito Federal,F,53,Aviador,Laranja-azul
+Rhavi Rocha,luna49,150,Cassiano,Paraná,F,45,Síndico,Marrom
+Gael Henrique Fernandes,vieiracalebe,65,Pacheco de Dias,São Paulo,M,73,Químico,Vermelha-branca
+Srta. Alice Casa Grande,ana-luizamachado,745,Campos de Monteiro,Bahia,M,62,Pára-quedista,Azul-verde
+Bruna Marques,bsouza,423,Casa Grande,Ceará,F,71,Diretor de cinema,Verde
+Helena Rezende,abreubenjamim,782,Montenegro,Mato Grosso,M,23,Lapidário,Verde-roxa
+Lorena Moraes,luiza03,763,Andrade,Santa Catarina,F,69,Treinador,Laranja
+Catarina Vieira,jose81,330,Costa,Espírito Santo,M,75,Fresador,Marrom-vermelha
+Rafaela Garcia,machadomiguel,591,Moura de Viana,Roraima,F,55,Encarregado de manutenção predial,Roxa-marrom
+Ravy Vasconcelos,pietra15,341,Santos,Roraima,M,29,Tenente,Roxa
+Arthur Gabriel Silveira,pfernandes,280,Andrade,Pará,F,28,Agente de defesa sanitária,Roxa-marrom
+Vinicius Azevedo,ssousa,164,Cirino,Mato Grosso,M,79,Empresário,Marrom
+Liam Pereira,igormartins,123,Araújo,Distrito Federal,M,37,Armador,Marrom-vermelha
+Raquel Câmara,rochayago,2,Campos do Amparo,Paraná,F,83,Promotor público/de justiça,Vermelha-branca
+Dr. Bernardo da Mata,wleao,593,Viana,Distrito Federal,M,75,Profissional de informática,Vermelha-branca
+Esther Gonçalves,tcamargo,131,Mendonça de Goiás,Goiás,F,18,Ortodontista,Azul-verde
+Beatriz Leão,allanaabreu,598,Fonseca,Rio Grande do Sul,M,72,Capitão,Marrom
+Raul Melo,paparecida,741,Novaes do Norte,Rio de Janeiro,F,82,Lactarista hospitalar,Roxa
+Bruna Sousa,ravyda-cunha,371,das Neves,Paraná,M,24,Profissional de hotelaria,Vermelha
+Rebeca Camargo,srios,900,Moreira,Rio de Janeiro,M,76,Economista doméstico,Azul-verde
+Sr. Pedro Lucas Araújo,sabrina98,850,Peixoto de Freitas,Rio Grande do Sul,M,32,Embalsamador,Roxa-marrom
+Sara Rios,fernandesaurora,112,Vieira,Pernambuco,M,44,Endodontista,Verde-roxa
+Emilly Peixoto,vargasgael,920,Rodrigues,São Paulo,M,29,Jogador de basquete,Verde-roxa
+Lorenzo Azevedo,tcorreia,240,Garcia,Rio Grande do Norte,M,19,Técnico em segurança do trabalho,Marrom
+Yuri Cavalcanti,vinicius90,172,Novais do Oeste,Paraná,F,31,Agente penitenciário,Azul-verde
+Gael Azevedo,leaozoe,747,Martins de Moura,Bahia,M,39,Carpinteiro,Roxa
+Dr. José Miguel Casa Grande,eduardada-paz,741,Araújo,Bahia,M,59,Engenheiro cartográfico,Laranja
+Isaac Vieira,rafaelafarias,647,Castro,Pará,F,67,Impressor,Marrom
+Davi Luiz Porto,da-rosastella,132,Costa,Pará,M,64,Peixeiro,Verde
+Pietra Pereira,maria-helenanogueira,836,Rezende da Mata,Acre,F,90,Marcador de luz,Branca
+Davi Miguel da Paz,luiz-henrique59,294,da Mata da Mata,Pernambuco,F,60,Ilustrador,Roxa
+Dr. Rhavi Aparecida,theorodrigues,972,Rezende da Praia,Mato Grosso,M,63,Operador de vídeo,Laranja
+Sr. João Abreu,arthur52,510,Pacheco do Norte,Mato Grosso,M,46,Caminhoneiro,Branca
+Vitor Hugo Duarte,elisa26,724,Barros,São Paulo,M,25,Atleta de nado sincronizado,Vermelha-branca
+Dr. Henrique Ramos,fernando45,959,Barros do Sul,Rio Grande do Norte,M,20,Coordenador,Marrom
+Sarah Albuquerque,yan16,555,Correia de Minas,Ceará,F,24,Terapeuta ocupacional,Vermelha
+Sra. Aurora Cardoso,jesusana-clara,730,Barros Grande,Maranhão,F,87,Administrador público,Roxa-marrom
+José Miguel Silveira,nvasconcelos,416,Azevedo,Paraná,M,70,Engenheiro de alimentos,Roxa-marrom
+Sr. Antony Melo,riosmateus,75,Azevedo Grande,Mato Grosso,F,83,Ourives,Branca
+Eduardo Alves,carvalhobreno,102,Cavalcante das Pedras,Amapá,M,25,Designer de jóia,Vermelha-branca
+Srta. Aurora Machado,augustobarbosa,484,Guerra de Goiás,Santa Catarina,F,49,Urbanista,Vermelha
+Heloísa Ribeiro,alicepimenta,975,Nunes de Cunha,Bahia,M,37,Protético dentário,Vermelha
+Dr. Juan Novais,heloisavargas,386,Cavalcanti,Amazonas,F,69,Capelão,Azul-verde
+Bruna Silva,hmendes,820,das Neves das Pedras,Distrito Federal,M,81,Empacotador,Marrom
+Dra. Sabrina Nunes,caldeirabento,353,Sales,Rondônia,M,27,Técnico em tratamento de água,Vermelha-branca
+Luiz Henrique Melo,correiastephany,110,da Costa,Rio Grande do Norte,M,24,Projetista mecânico,Verde-roxa
+Léo Andrade,vitoria24,187,Vieira do Norte,Minas Gerais,F,84,Clap loader,Laranja-azul
+Ana Cecília Leão,marianebarros,864,Porto,Mato Grosso do Sul,M,21,Co-piloto,Vermelha-branca
+Sarah da Costa,ndas-neves,143,Rodrigues,Pernambuco,F,43,Argumentista,Azul
+Anna Liz da Luz,lucca28,897,Vasconcelos,Amazonas,F,49,Catador de material reciclável,Verde
+João Guilherme Costa,sabrinavasconcelos,890,Caldeira,Roraima,F,55,Laboratorista,Azul-verde
+Sr. Noah Aragão,diastheodoro,660,da Cruz,São Paulo,F,24,Ortopedista,Marrom-vermelha
+Yuri das Neves,gvargas,687,Nogueira,Mato Grosso,M,83,Implantodontista,Laranja-azul
+Helena Jesus,isabellygarcia,22,Moraes,Minas Gerais,M,78,Síndico,Vermelha
+Maria Helena Cunha,souzamarcos-vinicius,367,Sousa,Rio Grande do Sul,M,90,Engenheiro físico,Verde-roxa
+Eloá Gonçalves,camaradom,922,Machado de Lopes,Pará,M,83,Marechal,Marrom-vermelha
+Luiz Felipe Rezende,pimentaantonella,220,Castro de Marques,Paraíba,F,86,Cartunista,Azul
+Clarice Pimenta,luigifogaca,764,Rodrigues das Flores,Rio Grande do Sul,M,54,Gourmet,Azul
+Kaique Lima,ana-cecilia72,32,Lima,Rondônia,F,75,Construtor,Vermelha
+Cecília Rodrigues,antonella52,732,Abreu,Minas Gerais,F,82,Arrumadeira,Verde-roxa
+Josué Ramos,mathias41,97,Pastor do Sul,Minas Gerais,M,55,Polidor de produção,Marrom
+Dr. Isaque Castro,isabela75,210,Pinto,Paraná,M,67,Amolador de ferramentas,Vermelha-branca
+Luiz Henrique Moura,joao-guilhermeda-conceicao,848,Casa Grande de Goiás,Piauí,F,46,Ator,Roxa
+Srta. Maria Luísa Araújo,maria-luisa94,306,Ribeiro de Leão,Goiás,F,88,Confeiteiro,Azul
+Antonella Pires,camposisadora,79,Garcia,Mato Grosso,F,60,Afiador de ferramentas,Azul-verde
+Lívia Aparecida,yramos,989,Sampaio,Rio Grande do Sul,M,24,Cozinheira,Azul
+Isabella da Costa,jcardoso,499,Silveira da Prata,Mato Grosso,F,18,Fisiculturista,Laranja
+Mirella Fogaça,juansa,209,Cardoso,Rondônia,M,70,Engenheiro mecatrônico,Vermelha
+Igor da Conceição,raulmoreira,281,Gomes das Pedras,Rio Grande do Sul,M,72,Meteorologista,Verde
+Ana Julia Montenegro,sousabruna,77,Ramos das Pedras,Sergipe,F,59,Piloto automobilístico,Roxa
+Eduarda Souza,rpimenta,498,Ferreira,Roraima,M,84,Profissional de relações públicas,Azul
+Elisa Pastor,beatriz95,769,Macedo,Goiás,F,33,Pedagogo,Verde
+Valentina das Neves,krezende,250,da Luz,Rio Grande do Norte,M,42,Clínico geral,Roxa
+Aylla Melo,vasconcelosrenan,704,Cavalcanti Verde,Minas Gerais,F,34,Operador de telemarketing,Azul-verde
+Pedro Henrique Nascimento,marcela77,839,Cirino do Norte,Acre,M,51,Delegado,Roxa-marrom
+Ana Beatriz Garcia,mendoncamaria-clara,832,Teixeira Grande,Rio de Janeiro,M,61,Delegado,Azul-verde
+Ana Luiza Barbosa,davi-luiz69,777,Monteiro,Ceará,F,47,Presidente da República,Verde
+Alícia Aparecida,hrezende,142,Almeida,Bahia,M,45,Contábil,Laranja
+Sophie Casa Grande,olivia55,585,Marques,Mato Grosso do Sul,M,84,Ortodontista,Roxa
+Dra. Gabrielly Peixoto,peixotomaria-sophia,833,Marques do Sul,Rio de Janeiro,M,89,Broker/Corretor da bolsa de valores,Verde-roxa
+Dra. Fernanda Oliveira,gustavo-henrique18,466,Pinto do Campo,Pernambuco,M,21,Diarista,Roxa
+Dr. Benício Azevedo,caldeiracaleb,553,Costa do Campo,São Paulo,M,45,Produtor de audio visual,Vermelha-branca
+Lucca Macedo,barroshenry-gabriel,883,Barros,Amapá,F,82,Capelão,Roxa
+Juliana Cunha,isabelly28,856,Fogaça,Mato Grosso,M,25,Bóia-fria,Verde-roxa
+Enzo Gabriel Souza,ana-liz43,728,Montenegro dos Dourados,Pernambuco,M,71,Gerente de inovações ou novos negócios,Branca
+Lucas Macedo,isaque64,268,Rocha,Santa Catarina,F,88,Fundidor,Azul
+Antony Leão,aliciacavalcanti,367,Guerra,Rio Grande do Sul,F,87,Coordenador,Marrom-vermelha
+Otávio Dias,oliveralves,499,Sá dos Dourados,Paraná,F,52,Classificador contábil,Azul-verde
+Kamilly Pires,maria-isisvargas,403,Nogueira,Paraná,M,56,Diarista,Branca
+Igor Alves,hadassa99,601,da Rocha,Bahia,M,39,Trompetista,Marrom
+Marcelo da Conceição,luanabarros,1,Camargo de Sampaio,Roraima,M,62,Salva-vidas,Laranja-azul
+Maya Gonçalves,salessabrina,520,Macedo de Mendonça,Distrito Federal,M,45,Retificador,Laranja
+Fernando Cardoso,isadora82,646,Macedo,Santa Catarina,M,28,Pedreiro,Vermelha
+Marina Peixoto,benjamim44,88,Nunes dos Dourados,São Paulo,F,63,Gestor ambiental,Branca
+Ravi Lucca Pinto,da-cunhapedro-henrique,624,Pereira,Rio Grande do Sul,M,79,Despachante,Vermelha-branca
+Sr. Alexandre Souza,vargaspedro-miguel,265,da Rosa,Ceará,M,28,Borracheiro,Vermelha
+Luísa das Neves,camargolivia,64,Cardoso da Praia,Minas Gerais,F,73,Técnico de gesso,Azul
+Matteo Montenegro,vasconcelosolivia,170,Castro da Praia,Roraima,M,58,Polidor de produção,Azul
+Cecília Nascimento,azevedoevelyn,666,Azevedo de Mendes,Acre,F,60,Astrônomo,Verde-roxa
+Marcos Vinicius Ferreira,vianaester,986,Oliveira,Tocantins,F,34,Médico cirurgião,Laranja-azul
+Ester Carvalho,rochabernardo,408,Ribeiro,São Paulo,F,32,Engenheiro de controle e automação,Roxa-marrom
+Alice Martins,nribeiro,27,Sales Paulista,Bahia,F,33,Engenheiro de segurança do trabalho,Marrom-vermelha
+Rodrigo Silveira,pcosta,924,Moreira de da Conceição,Amapá,F,57,Pedagogo,Roxa-marrom
+Henry das Neves,marceloporto,221,da Paz de Pastor,Distrito Federal,F,49,Prático,Verde-roxa
+João Felipe Costa,da-rosaluiz-miguel,58,Campos das Pedras,Distrito Federal,M,62,Radialista,Verde
+Enzo Borges,aylamoraes,580,Camargo,Paraíba,F,73,Dermatologista,Vermelha-branca
+Antônio Cardoso,siqueiraliz,784,Montenegro de Casa Grande,Tocantins,M,22,Topógrafo,Azul-verde
+Yan Pires,osa,671,Andrade de Lopes,Piauí,F,23,Topógrafo,Azul-verde
+Ana Beatriz Oliveira,tcastro,128,Costa,Roraima,M,68,Técnico em aviação,Marrom
+Otto Marques,abarros,342,da Rosa,Acre,F,48,Engenheiro acústico,Roxa-marrom
+Ana Liz da Rosa,emillyteixeira,104,Câmara do Campo,Amazonas,M,76,Meeiro,Laranja-azul
+Dra. Ana Carolina Pereira,lnunes,630,Borges Alegre,Paraná,M,24,Marechal,Verde
+Bruna Jesus,vasconcelosana,644,Machado,Bahia,F,44,Ciclista,Marrom
+Srta. Isabelly Campos,rauljesus,414,das Neves do Norte,Pernambuco,M,31,Velejador,Verde-roxa
+Ana Laura Costela,camaralais,677,Fernandes de Mendes,Paraná,M,59,Gestor ambiental,Roxa-marrom
+Vitor Ribeiro,julia65,412,Pastor,Goiás,M,21,Tecnólogo em silvicultura,Laranja-azul
+Alice Moura,saparecida,65,Montenegro do Oeste,Bahia,F,80,Engenheiro mecânico,Verde
+Gael Lima,cavalcantiluigi,77,Martins,Rondônia,M,73,Tecelão,Laranja
+Ayla Silva,agatha30,552,Silva,Sergipe,M,57,Açougueiro,Branca
+Matteo Souza,hellena41,308,Camargo,Mato Grosso do Sul,M,80,Lubrificador de máquinas,Verde
+Catarina Almeida,umoraes,210,Pastor,Mato Grosso,F,89,Militar do Exército,Vermelha-branca
+Arthur Gabriel Peixoto,maria-liz63,925,Sampaio de Correia,Roraima,M,50,Agrônomo,Verde
+Sr. Marcelo Rodrigues,calebesiqueira,668,Macedo,Acre,M,41,Panfleteiro,Laranja
+Daniela Moraes,antonella46,627,Nogueira Paulista,Maranhão,F,50,Diretor de cinema,Marrom-vermelha
+Ayla Porto,sarah08,873,Borges,Pernambuco,M,26,Coordenador,Branca
+Isaac Barbosa,andre88,659,Abreu do Oeste,Distrito Federal,F,77,Ciclista,Branca
+Renan Albuquerque,eduardanunes,844,Rios,Ceará,F,52,Técnico em hardware,Roxa-marrom
+Giovanna Fogaça,ana-liz74,267,Almeida da Praia,Minas Gerais,M,67,Armeiro,Vermelha-branca
+José Duarte,oliveiralavinia,295,da Rocha,Rondônia,F,66,Capitão,Roxa
+Ana Silva,mouramaria-luiza,250,Silveira do Amparo,Bahia,F,45,Cineasta,Verde
+Maysa Fonseca,andregoncalves,969,Sá,Mato Grosso,M,25,Técnico de gesso,Laranja
+Cauã Melo,gabrielteixeira,773,Rocha Alegre,Paraíba,F,64,Tecnólogo em esporte e lazer,Roxa
+Melina Farias,qnovais,875,da Cruz de Minas,Acre,M,42,Hostess,Azul-verde
+Dom Dias,npimenta,152,Nogueira,Amapá,M,58,Profissional de tecnologia de laticínios,Azul
+Olívia Farias,scassiano,877,Novaes,Santa Catarina,M,38,Secretária,Laranja-azul
+Luiz Gustavo Mendes,lgarcia,125,Albuquerque,Acre,M,75,Paginador,Laranja-azul
+Calebe Borges,carolinadas-neves,355,Freitas,Sergipe,M,20,Panificador/Padeiro,Verde-roxa
+Ana Sophia Pires,rochavitor-gabriel,393,Siqueira Alegre,Rio Grande do Norte,F,37,Profissional de hotelaria,Branca
+Dra. Cecília Alves,tcardoso,190,Carvalho Verde,Tocantins,M,64,Continuista,Marrom-vermelha
+Carolina Machado,da-mataisaque,378,da Conceição Alegre,Rio Grande do Norte,M,59,Forneiro,Vermelha-branca
+Noah Cardoso,aragaomarcelo,812,das Neves,Santa Catarina,M,68,Militar do Exército,Verde-roxa
+Henrique Carvalho,dante98,417,Almeida Alegre,Distrito Federal,F,50,Salgadeira,Marrom
+Dra. Isabela Sousa,natalia96,867,Pacheco,Rio de Janeiro,F,26,Engenheiro físico,Azul
+Sr. Arthur Gabriel Jesus,sampaiofernando,235,Mendes,Roraima,F,19,Estampador de tecidos,Marrom-vermelha
+Maria Julia Monteiro,elisa35,947,Cavalcanti de Vargas,Sergipe,F,21,Patinador,Roxa
+Maria Sophia Almeida,zfarias,142,Vargas do Campo,Roraima,F,66,Conferente de recebimento,Roxa-marrom
+Cecilia Aragão,lucas-gabriel72,815,Carvalho,Mato Grosso do Sul,F,51,Tradutor,Verde-roxa
+Olivia Aparecida,diego32,920,Campos,Santa Catarina,M,33,Orçamentista,Marrom
+Letícia Aparecida,rafaelmendonca,256,Montenegro do Amparo,Bahia,F,25,Chefe de cozinha,Laranja-azul
+Léo Marques,luiz-otavio76,210,da Cruz,Sergipe,M,41,Técnico em segurança do trabalho,Verde
+Amanda Porto,emanuelsa,227,Duarte,Mato Grosso,M,39,Salgadeira,Azul-verde
+Maria Macedo,bmartins,220,Aragão das Pedras,Ceará,M,80,Profissional de cinema,Branca
+Bernardo Pereira,ualves,489,Araújo,Ceará,M,33,Tecnólogo em negócios imobiliários,Vermelha
+Diego Camargo,ksales,289,Porto,Rio Grande do Sul,M,56,Jornalista,Laranja
+Isaque Nogueira,sarahnovais,279,Nascimento da Serra,Sergipe,M,77,Entalhador,Laranja-azul
+Zoe Fonseca,henry72,110,da Costa,Bahia,M,84,Leiloeiro,Vermelha
+Dr. Vitor Gabriel Caldeira,renan01,900,Moreira de Goiás,Rondônia,F,71,Embalsamador,Azul
+Luiz Miguel Gonçalves,ramoscarolina,657,da Mata,Rio de Janeiro,F,35,Consultor de moda,Vermelha
+Fernanda Gonçalves,dmachado,427,Duarte do Galho,Goiás,F,64,Técnico em edificações,Azul-verde
+Dr. Carlos Eduardo Viana,ribeironina,139,Aragão,Pernambuco,M,88,Rebarbador de metal,Roxa
+Oliver Barros,portoisis,141,Caldeira,São Paulo,M,76,Selecionador de pessoal,Branca
+Anna Liz Santos,rrios,904,Guerra,Pernambuco,M,81,Cerimonialista,Roxa-marrom
+João Miguel Farias,nicolepacheco,582,Cavalcanti da Serra,Amazonas,M,18,Sociólogo,Marrom-vermelha
+Anna Liz Nogueira,portoana-sophia,760,da Paz,Mato Grosso do Sul,M,22,Moldureiro,Verde-roxa
+Sra. Jade Andrade,bsales,446,Santos de Lima,Rio Grande do Norte,F,65,Contador,Azul
+Davi Casa Grande,pintodavi-lucca,933,da Rosa,Paraíba,M,60,Tecnólogo em negócios imobiliários,Verde
+Ana Liz Novais,rebecafernandes,154,Gonçalves Alegre,Pará,M,23,Inspetor,Vermelha
+Sofia Caldeira,joaquimandrade,715,Pimenta do Oeste,Piauí,F,48,Panificador/Padeiro,Azul
+Ester Azevedo,casa-grandedavi,191,Moraes de Castro,Ceará,F,18,Flautista,Verde
+Bryan Pinto,dteixeira,566,Melo Alegre,Minas Gerais,F,83,Guincheiro,Verde
+Marcos Vinicius da Rocha,marianasouza,82,Montenegro,Sergipe,F,27,Microfonista,Branca
+Bento Moraes,jsa,813,Costa,São Paulo,F,85,Paisagista,Vermelha-branca

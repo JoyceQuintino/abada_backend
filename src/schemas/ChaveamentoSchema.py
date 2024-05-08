@@ -13,6 +13,9 @@ class CategoriaInput(BaseModel):
 class ChaveamentoInput(BaseModel):
     categorias: List[CategoriaInput]
     token: str
+    
+class ChaveamentoPDF(BaseModel):
+    fase: str
 
 class StandardOutput(BaseModel):
     message: str

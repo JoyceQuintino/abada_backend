@@ -4,13 +4,72 @@ from starlette.responses import RedirectResponse
 from src.services.ChaveamentoService import ChaveamentoService
 from src.schemas import ChaveamentoSchema
 from src.database.db_connection import async_session
-from src.schemas.ChaveamentoSchema import ChaveamentoInput, CategoriaInput
+from src.schemas.ChaveamentoSchema import ChaveamentoInput, CategoriaInput, ChaveamentoPDF
 from sqlalchemy import text
 
 tokens_validos = ['08f57f2c-ac47-4e52-8098-f3fce671b0f0']
 
 chaveamento_router = APIRouter(prefix='/chaveamento', tags=['Chaveamento'])
 assets_router = APIRouter(prefix='/assets')
+
+@chaveamento_router.get('/get_pdf_jogos')
+async def chaveamento_jogos_pdf(payload: ChaveamentoPDF):
+    jogos = []
+    
+    try:
+        async with async_session() as session:
+            update_query = text("""
+                UPDATE "Jogos"
+                    SET jogo_order = CASE
+                        WHEN id_competidor_1 IS NOT NULL AND id_competidor_2 IS NOT NULL THEN 1
+                        WHEN id_competidor_1 IS NOT NULL AND id_competidor_2 IS NULL THEN 2
+                        ELSE 3
+                    END;
+                """)
+
+            await session.execute(update_query)
+
+            select_query = text(""" 
+                SELECT 
+                    j.id AS jogo_id,
+                    Competidores1.apelido AS competidor_1,
+	                Competidores1.numero AS numero_competidor_1,
+                    Competidores2.apelido AS competidor_2,
+	                Competidores2.numero AS numero_competidor_2,
+                    m.nome AS modalidade_nome,
+	                c.nome AS categoria_nome,
+                    j.fase AS fase
+                FROM 
+                    "Jogos" j
+                LEFT JOIN 
+                    "Competidores" AS Competidores1 ON j.id_competidor_1 = Competidores1.id
+                LEFT JOIN 
+                    "Competidores" AS Competidores2 ON j.id_competidor_2 = Competidores2.id
+                JOIN 
+                    "Modalidades" m ON j.id_modalidade = m.id
+                JOIN
+	                "Categorias" c ON j.id_categoria = c.id
+                WHERE j.fase = :fase
+                ORDER BY m.nome, j.jogo_order;
+            """)
+
+            result = await session.execute(select_query, {"fase": payload.fase})
+            jogos_by_fase = result.fetchall()
+
+        for row in jogos_by_fase:
+            jogos.append({
+                "id_jogo": str(row[0]),
+                "apelido_competidor_1": row[1],
+                "numero_competidor_1": row[2],
+                "apelido_competidor_2": row[3],
+                "numero_competidor_2": row[4],
+                "modalidade_nome": row[5],
+                "categoria_nome": row[6],
+                "fase": row[7]
+            })
+    finally:
+        await session.close()
+    return await ChaveamentoService.get_pdf_jogos(response=jogos)
 
 @chaveamento_router.post('/categoria_teste')
 async def chaveamento_jogos_teste(payload: ChaveamentoInput, request: Request):

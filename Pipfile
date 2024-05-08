@@ -18,6 +18,9 @@ python-jose = "*"
 python-multipart = "*"
 alembic = "*"
 python-decouple = "*"
+pydantic = "*"
+pydantic-settings = "*"
+reportlab = "*"
 
 [dev-packages]
 
