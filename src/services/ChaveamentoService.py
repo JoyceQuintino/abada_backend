@@ -27,16 +27,16 @@ class ChaveamentoService:
         c.drawText(text)
         alt = h-100
         for jogo in response:
-            text = c.beginText(50, alt)
-            text.setFont('Times-Roman', 12)
+            text = c.beginText(35, alt)
+            text.setFont('Times-Roman', 14)
             text.textLine(f'MODALIDADE: {jogo["modalidade_nome"]}')
             text.textLine(f'CATEGORIA: {jogo["categoria_nome"]}')
             text.textLine(f'JOGAM {jogo["apelido_competidor_1"]} - {jogo["numero_competidor_1"]} E {jogo["apelido_competidor_2"]} - {jogo["numero_competidor_2"]}')
-            alt -= 50
+            alt -= 60
             c.drawText(text)
-            if alt < 50:  # Adiciona uma nova página se o espaço restante for insuficiente
+            if alt < 65:  # Adiciona uma nova página se o espaço restante for insuficiente
                 c.showPage()
-                alt = h - 50
+                alt = h - 60
         c.save()
         return "PDF gerado com sucesso!"
     
