@@ -1,16 +1,17 @@
-nome,apelido,numero,cidade,estado,sexo,idade,filiacao,graduacao
-wendy,jandaia,0,Fortaleza,CE,F,,Berimbau,laranja-azul
-carlos,pajé,1,Fortaleza,CE,M,,Berimbau,laranja
-caio,super-choque,2,Fortaleza,CE,M,,Berimbau,laranja
-pp,pp,3,Fortaleza,CE,M,,Berimbau,laranja
-baqueta,baqueta,4,Fortaleza,CE,M,,Berimbau,laranja
-jambo,jambo,5,Fortaleza,CE,M,,Berimbau,laranja
-walyson,guerreiro,6,Fortaleza,CE,M,,Berimbau,verde
-lobo,lobo,7,Fortaleza,CE,M,,Berimbau,roxa
-douglas,shampoo,8,Fortaleza,CE,M,,Berimbau,azul-verde
-leonardo,artista,9,Fortaleza,CE,M,,Berimbau,azul-verde
-cadarço,cadarço,10,Fortaleza,CE,M,,Berimbau,verde
-lagarto,lagarto,11,Fortaleza,CE,M,,Berimbau,verde
-espinho,espinho,12,Fortaleza,CE,M,,Berimbau,roxa
-careca,careca,13,Fortaleza,CE,M,,Berimbau,roxa
-joyce,joyce,14,Fortaleza,CE,F,,Berimbau,laranja
+nome,apelido,numero,cidade,estado,sexo,idade,id_filiacao,id_graduacao
+fred, fred, 1, Fortaleza, CE, M,,,d002cf45-0f2e-48a8-a5d8-d6b846d056f8
+gael, gael, 2, Fortaleza, CE, M,,,d002cf45-0f2e-48a8-a5d8-d6b846d056f8
+quiel, quiel, 3 Fortaleza, CE, M,,,d002cf45-0f2e-48a8-a5d8-d6b846d056f8
+pingo, pingo, 4, Fortaleza, CE, M,,,d002cf45-0f2e-48a8-a5d8-d6b846d056f8
+shaolin, shaolin, 5, Fortaleza, CE, M,,,d002cf45-0f2e-48a8-a5d8-d6b846d056f8
+denner, denner, 6, Fortaleza, CE, M,,,d002cf45-0f2e-48a8-a5d8-d6b846d056f8
+bia, bia, 7, Fortaleza, CE, M,,,d002cf45-0f2e-48a8-a5d8-d6b846d056f8
+danone, danone, 8, Fortaleza, CE, M,,,d002cf45-0f2e-48a8-a5d8-d6b846d056f8
+cicatriz, cicatriz, 9, Fortaleza, CE, M,,,d002cf45-0f2e-48a8-a5d8-d6b846d056f8
+danilo, danilo, 10, Fortaleza, CE, M,,,d002cf45-0f2e-48a8-a5d8-d6b846d056f8
+
+
+
+
+
+

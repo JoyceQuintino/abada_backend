@@ -35,7 +35,7 @@ def initial():
 
 
 app.include_router(prefix='/initial', router=router)
-#app.include_router(insert_router)
+app.include_router(insert_router)
 app.include_router(competidor_router)
 app.include_router(chaveamento_router)
 app.include_router(graduacao_router)

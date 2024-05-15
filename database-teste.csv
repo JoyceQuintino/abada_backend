@@ -1,16 +1,24 @@
 nome,apelido,numero,cidade,estado,sexo,idade,filiacao,graduacao
-wendy,jandaia,1,Fortaleza,CE,F,,Berimbau,laranja-azul
-carlos,pajé,2,Fortaleza,CE,M,,Berimbau,laranja
-caio,super-choque,3,Fortaleza,CE,M,,Berimbau,laranja
-pp,pp,4,Fortaleza,CE,M,,Berimbau,laranja
-baqueta,baqueta,5,Fortaleza,CE,M,,Berimbau,laranja
-jambo,jambo,6,Fortaleza,CE,F,,Berimbau,laranja
-walyson,guerreiro,7,Fortaleza,CE,M,,Berimbau,verde
-lobo,lobo,8,Fortaleza,CE,M,,Berimbau,roxa
+clarisse, clarisse, 1, Fortaleza, CE, F,,Berimbau, crua-amarela
+gael, gael, 2, Fortaleza, CE, M,, Berimbau, amarela-laranja
+shaolin, shaolin, 3, Fortaleza, CE, M,, Berimbau, amarela-laranja
+trator, trator, 4, Fortaleza, CE, M,, Berimbau, amarela-laranja
+fred, fred, 5, Fortaleza, CE, M,, Berimbau, amarela-laranja
+pelado, pelado, 6, Fortaleza, CE, M,, Berimbau, laranja
+danilo, danilo, 7, Fortaleza, CE, M,, Berimbau, laranja
+walyson,guerreiro,8,Fortaleza,CE,M,,Berimbau,verde
 douglas,shampoo,9,Fortaleza,CE,M,,Berimbau,azul-verde
 leonardo,artista,10,Fortaleza,CE,M,,Berimbau,azul-verde
-cadarço,cadarço,11,Fortaleza,CE,M,,Berimbau,verde
-lagarto,lagarto,12,Fortaleza,CE,M,,Berimbau,verde
-espinho,espinho,13,Fortaleza,CE,M,,Berimbau,roxa
-careca,careca,14,Fortaleza,CE,M,,Berimbau,roxa
-joyce,joyce,15,Fortaleza,CE,F,,Berimbau,laranja
+compasso, compasso, 11, Fortaleza, CE, M,, Berimbau, azul-verde 
+gildo, gildo, 12, Fortaleza, CE, M,, Berimbau, azul-verde
+lua nova, 13, Fortaleza, CE, F,, Berimbau, verde roxa
+mudinho branco, 14, Fortaleza, CE, M,, Berimbau, verde
+enzo, enzo, 15, Fortaleza, CE, M,, Berimbau, amarela
+quiel, quiel, 16, Fortaleza, CE, M,, Berimbau, amarela
+emília, emília, 17, Fortaleza, CE, F,, Castanha, verde
+tetéu, tetéu, 18, Fortaleza, CE, M,, Berimbau, verde
+pingo, pingo, 19, Fortaleza, CE, M,, Berimbau, laranja-crua
+felipe, felipe, 20, Fortaleza, CE, M,, Jamaica, azul
+mica, mica, 21, Fortaleza, CE, M,, Jamaica, laranja-azul
+danone, danone, 22, Fortaleza, CE, M,, Jamaica, laranja-azul
+bia, bia, 23, Fortaleza, CE, F,, Jamaica, laranja-azul

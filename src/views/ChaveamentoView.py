@@ -66,6 +66,7 @@ async def get_all_players_by_step(fase: str):
             select_query = text(""" 
                 SELECT 
                     j.id AS jogo_id,
+                    Competidores1.sexo AS sexo,
                     Competidores1.apelido AS competidor_1,
 	                Competidores1.numero AS numero_competidor_1,
                     Competidores2.apelido AS competidor_2,
@@ -93,13 +94,14 @@ async def get_all_players_by_step(fase: str):
         for row in jogos_by_fase:
             jogos.append({
                 "id_jogo": str(row[0]),
-                "apelido_competidor_1": row[1],
-                "numero_competidor_1": row[2],
-                "apelido_competidor_2": row[3],
-                "numero_competidor_2": row[4],
-                "modalidade_nome": row[5],
-                "categoria_nome": row[6],
-                "fase": row[7]
+                "sexo": row[1],
+                "apelido_competidor_1": row[2],
+                "numero_competidor_1": row[3],
+                "apelido_competidor_2": row[4],
+                "numero_competidor_2": row[5],
+                "modalidade_nome": row[6],
+                "categoria_nome": row[7],
+                "fase": row[8]
             })
 
         content = {

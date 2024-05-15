@@ -8,6 +8,14 @@ FEMININO = 'F'
 GENERO = 'genero'
 FASE = 'fase'
 
+graduados = [
+    "graduadas",
+    "azul-azul-verde",
+    "verde-verde-roxa",
+    "roxa-roxa-marrom",
+    "marrom-marrom-vermelha"
+]
+
 class Utils:
 
     @staticmethod
@@ -40,97 +48,301 @@ class Utils:
             divided_players.append(group)
         return divided_players
 
+    # @staticmethod
+    # async def round_robin(players: List, genero: str, modalidades: List, categoria: str, quantidade_competidores: int, fase: str, session):
+    #     chaves = {}
+    #     jogos = []
+
+    #     categoria_obj = None
+    #     result = await session.execute(select(Categorias).filter_by(nome=categoria))
+    #     categoria_obj = result.scalar()
+
+    #     if not categoria_obj:
+    #         raise ValueError(f"A categoria '{categoria}' não foi encontrada.")
+
+    #     if len(players) < 4:
+    #         if len(players) == 0:
+    #             players.append(Competidores(nome="", apelido="", cidade="", estado="", id_graduacao=""))
+    #         else:
+    #             players.append(Competidores(nome=None, apelido=None, cidade=None, estado=None, id_graduacao=players[0].id_graduacao))
+
+    #     is_graduado = categoria in graduados
+
+    #     for index, modalidade in enumerate(modalidades):
+    #         print(index, modalidade)
+    #         rodada = {}
+    #         players_modalidade = players[:quantidade_competidores]
+
+    #         if len(players_modalidade) >= 4:
+    #             if index == 0:
+    #                 for j in range(0, len(players_modalidade), 2):
+    #                     if j + 1 < len(players_modalidade):
+    #                         id_competidor_1 = players_modalidade[j].id
+    #                         id_competidor_2 = players_modalidade[j+1].id
+
+    #                         jogo = Jogos(id_competidor_1=id_competidor_1,
+    #                                      id_competidor_2=id_competidor_2,
+    #                                      modalidade=modalidade,
+    #                                      categoria=categoria_obj,
+    #                                      fase=fase,
+    #                                      jogo_order=j+1)
+    #                         rodada[f'jogo_{j+1}'] = jogo
+    #                         jogos.append(rodada[f'jogo_{j+1}'])
+    #             elif index == 1 and is_graduado:
+    #                 for j in range(0, len(players_modalidade), 4):
+    #                     if j + 3 < len(players_modalidade):
+    #                         id_competidor_1 = players_modalidade[j].id
+    #                         id_competidor_2 = players_modalidade[j+3].id
+
+    #                         jogo = Jogos(id_competidor_1=id_competidor_1,
+    #                                      id_competidor_2=id_competidor_2,
+    #                                      modalidade=modalidade,
+    #                                      categoria=categoria_obj,
+    #                                      fase=fase,
+    #                                      jogo_order=j+1)
+    #                         rodada[f'jogo_{j+1}'] = jogo
+    #                         jogos.append(rodada[f'jogo_{j+1}'])
+
+    #                         id_competidor_1 = players_modalidade[j+1].id
+    #                         id_competidor_2 = players_modalidade[j+2].id
+
+    #                         jogo = Jogos(id_competidor_1=id_competidor_1,
+    #                                      id_competidor_2=id_competidor_2,
+    #                                      modalidade=modalidade,
+    #                                      categoria=categoria_obj,
+    #                                      fase=fase,
+    #                                      jogo_order=j+2)
+    #                         rodada[f'jogo_{j+2}'] = jogo
+    #                         jogos.append(rodada[f'jogo_{j+2}'])
+    #             elif index == 2:
+    #                 for j in range(0, len(players_modalidade), 4):
+    #                     if j + 3 < len(players_modalidade):
+    #                         id_competidor_1 = players_modalidade[j].id
+    #                         id_competidor_2 = players_modalidade[j+2].id
+
+    #                         jogo = Jogos(id_competidor_1=id_competidor_1,
+    #                                      id_competidor_2=id_competidor_2,
+    #                                      modalidade=modalidade,
+    #                                      categoria=categoria_obj,
+    #                                      fase=fase,
+    #                                      jogo_order=j+1)
+    #                         rodada[f'jogo_{j+1}'] = jogo
+    #                         jogos.append(rodada[f'jogo_{j+1}'])
+
+    #                         id_competidor_1 = players_modalidade[j+1].id
+    #                         id_competidor_2 = players_modalidade[j+3].id
+
+    #                         jogo = Jogos(id_competidor_1=id_competidor_1,
+    #                                      id_competidor_2=id_competidor_2,
+    #                                      modalidade=modalidade,
+    #                                      categoria=categoria_obj,
+    #                                      fase=fase,
+    #                                      jogo_order=j+2)
+    #                         rodada[f'jogo_{j+2}'] = jogo
+    #                         jogos.append(rodada[f'jogo_{j+2}'])
+    #         else:
+    #             # Para menos de 4 jogadores, a lógica permanece a mesma das modalidades seguintes
+    #             for j in range(0, len(players_modalidade), 4):
+    #                 if j + 3 < len(players_modalidade):
+    #                     id_competidor_1 = players_modalidade[j].id
+    #                     id_competidor_2 = players_modalidade[j+2].id
+
+    #                     jogo = Jogos(id_competidor_1=id_competidor_1,
+    #                                  id_competidor_2=id_competidor_2,
+    #                                  modalidade=modalidade,
+    #                                  categoria=categoria_obj,
+    #                                  fase=fase,
+    #                                  jogo_order=j+1)
+    #                     rodada[f'jogo_{j+1}'] = jogo
+    #                     jogos.append(rodada[f'jogo_{j+1}'])
+
+    #                     id_competidor_1 = players_modalidade[j+1].id
+    #                     id_competidor_2 = players_modalidade[j+3].id
+
+    #                     jogo = Jogos(id_competidor_1=id_competidor_1,
+    #                                  id_competidor_2=id_competidor_2,
+    #                                  modalidade=modalidade,
+    #                                  categoria=categoria_obj,
+    #                                  fase=fase,
+    #                                  jogo_order=j+2)
+    #                     rodada[f'jogo_{j+2}'] = jogo
+    #                     jogos.append(rodada[f'jogo_{j+2}'])
+
+    #         if jogos:
+    #             chaves[FASE] = fase
+    #             chaves[GENERO] = 'Feminino' if genero == FEMININO else 'Masculino'
+    #             chaves[f'{modalidade.nome}'] = []
+
+    #     return (chaves, jogos)
+
     @staticmethod
     async def round_robin(players: List, genero: str, modalidades: List, categoria: str, quantidade_competidores: int, fase: str, session):
         chaves = {}
         jogos = []
-        jogos_com_nulo = []
-        jogos_ok = []
 
-        categoria_obj = None
+        # Recupera a categoria do banco de dados
         result = await session.execute(select(Categorias).filter_by(nome=categoria))
         categoria_obj = result.scalar()
 
         if not categoria_obj:
             raise ValueError(f"A categoria '{categoria}' não foi encontrada.")
 
-        if len(players) < 4:
-            if len(players) == 0:
-                players.append(Competidores(nome="", apelido="", cidade="", estado="", id_graduacao=""))
-            else:
-                players.append(Competidores(nome=None, apelido=None, cidade=None, estado=None, id_graduacao=players[0].id_graduacao))
-        
-        for modalidade in modalidades:
-            if categoria == "laranja-laranja-azul" and modalidade.nome == "siriuna":
-                continue
+        # Se o número de jogadores for menor que a quantidade desejada, adiciona jogadores fictícios (byes)
+        while len(players) < quantidade_competidores:
+            players.append(Competidores(nome="BYE", apelido="BYE", cidade="", estado="", id_graduacao=""))
+
+        is_graduado = categoria in graduados
+
+        for index, modalidade in enumerate(modalidades):
             rodada = {}
-            players = players[:quantidade_competidores]
+            players_modalidade = players[:quantidade_competidores]
 
-            if categoria != "laranja-laranja-azul" or len(players) <= 4:
-                for j in range(0, len(players), 2):
-                    if j + 1 < len(players):
-                        id_competidor_1 = players[j].id
-                        id_competidor_2 = players[-j-1].id
+            if len(players_modalidade) >= 4:
+                if index == 0:
+                    # Modalidade 1: Jogos entre pares consecutivos
+                    for j in range(0, len(players_modalidade), 2):
+                        if j + 1 < len(players_modalidade):
+                            id_competidor_1 = players_modalidade[j].id
+                            id_competidor_2 = players_modalidade[j + 1].id
 
-                        jogo = Jogos(id_competidor_1=id_competidor_1,
-                                 id_competidor_2=id_competidor_2,
-                                 modalidade=modalidade,
-                                 categoria=categoria_obj,
-                                 fase=fase,
-                                 jogo_order=j+1)
-                        rodada[f'jogo_{j+1}'] = jogo
-                        jogos.append(rodada[f'jogo_{j+1}'])
+                            jogo = Jogos(id_competidor_1=id_competidor_1,
+                                         id_competidor_2=id_competidor_2,
+                                         modalidade=modalidade,
+                                         categoria=categoria_obj,
+                                         fase=fase,
+                                         jogo_order=j + 1)
+                            rodada[f'jogo_{j + 1}'] = jogo
+                            jogos.append(rodada[f'jogo_{j + 1}'])
+
+                elif index == 1 and is_graduado:
+                    # Modalidade 2: Jogos entre pares específicos (para graduados)
+                    for j in range(0, len(players_modalidade), 4):
+                        if j + 3 < len(players_modalidade):
+                            id_competidor_1 = players_modalidade[j].id
+                            id_competidor_2 = players_modalidade[j + 3].id
+
+                            jogo = Jogos(id_competidor_1=id_competidor_1,
+                                         id_competidor_2=id_competidor_2,
+                                         modalidade=modalidade,
+                                         categoria=categoria_obj,
+                                         fase=fase,
+                                         jogo_order=len(jogos) + 1)
+                            rodada[f'jogo_{len(jogos) + 1}'] = jogo
+                            jogos.append(rodada[f'jogo_{len(jogos) + 1}'])
+
+                            if j + 2 < len(players_modalidade):
+                                id_competidor_1 = players_modalidade[j + 1].id
+                                id_competidor_2 = players_modalidade[j + 2].id
+
+                                jogo = Jogos(id_competidor_1=id_competidor_1,
+                                             id_competidor_2=id_competidor_2,
+                                             modalidade=modalidade,
+                                             categoria=categoria_obj,
+                                             fase=fase,
+                                             jogo_order=len(jogos) + 1)
+                                rodada[f'jogo_{len(jogos) + 1}'] = jogo
+                                jogos.append(rodada[f'jogo_{len(jogos) + 1}'])
+
+                    # Verificação adicional para número de jogadores não múltiplo de 4
+                    if len(players_modalidade) % 4 != 0:
+                        # Pegue os dois últimos jogadores
+                        jogadores_restantes = players_modalidade[-2:]
+                        ultimo_jogo = jogos[-1]
+
+                        # Crie dois novos jogos com os dois jogadores restantes e os jogadores do último jogo
+                        novo_jogo_1 = Jogos(id_competidor_1=ultimo_jogo.id_competidor_1,
+                                            id_competidor_2=jogadores_restantes[0].id,
+                                            modalidade=modalidade,
+                                            categoria=categoria_obj,
+                                            fase=fase,
+                                            jogo_order=len(jogos))  # manter a ordem do último jogo original
+
+                        novo_jogo_2 = Jogos(id_competidor_1=ultimo_jogo.id_competidor_2,
+                                            id_competidor_2=jogadores_restantes[1].id,
+                                            modalidade=modalidade,
+                                            categoria=categoria_obj,
+                                            fase=fase,
+                                            jogo_order=len(jogos) + 1)
+
+                        # Substitua o último jogo original pelo primeiro novo jogo
+                        jogos[-1] = novo_jogo_1
+                        # Adicione o segundo novo jogo
+                        jogos.append(novo_jogo_2)
+
+                elif index == 2:
+                    # Modalidade 3: Jogos entre outros pares específicos
+                    for j in range(0, len(players_modalidade), 4):
+                        if j + 2 < len(players_modalidade):
+                            id_competidor_1 = players_modalidade[j].id
+                            id_competidor_2 = players_modalidade[j + 2].id
+
+                            jogo = Jogos(id_competidor_1=id_competidor_1,
+                                         id_competidor_2=id_competidor_2,
+                                         modalidade=modalidade,
+                                         categoria=categoria_obj,
+                                         fase=fase,
+                                         jogo_order=len(jogos) + 1)
+                            rodada[f'jogo_{len(jogos) + 1}'] = jogo
+                            jogos.append(rodada[f'jogo_{len(jogos) + 1}'])
+
+                        if j + 3 < len(players_modalidade):
+                            id_competidor_1 = players_modalidade[j + 1].id
+                            id_competidor_2 = players_modalidade[j + 3].id
+
+                            jogo = Jogos(id_competidor_1=id_competidor_1,
+                                         id_competidor_2=id_competidor_2,
+                                         modalidade=modalidade,
+                                         categoria=categoria_obj,
+                                         fase=fase,
+                                         jogo_order=len(jogos) + 1)
+                            rodada[f'jogo_{len(jogos) + 1}'] = jogo
+                            jogos.append(rodada[f'jogo_{len(jogos) + 1}'])
+
+                    # Verificação adicional para número de jogadores não múltiplo de 4
+                    if len(players_modalidade) % 4 != 0:
+                        # Pegue os dois últimos jogadores
+                        jogadores_restantes = players_modalidade[-2:]
+                        ultimo_jogo = jogos[-1]
+
+                        # Crie dois novos jogos com os dois jogadores restantes e os jogadores do último jogo
+                        novo_jogo_1 = Jogos(id_competidor_1=ultimo_jogo.id_competidor_1,
+                                            id_competidor_2=jogadores_restantes[0].id,
+                                            modalidade=modalidade,
+                                            categoria=categoria_obj,
+                                            fase=fase,
+                                            jogo_order=len(jogos))  # manter a ordem do último jogo original
+
+                        novo_jogo_2 = Jogos(id_competidor_1=ultimo_jogo.id_competidor_2,
+                                            id_competidor_2=jogadores_restantes[1].id,
+                                            modalidade=modalidade,
+                                            categoria=categoria_obj,
+                                            fase=fase,
+                                            jogo_order=len(jogos) + 1)
+
+                        # Substitua o último jogo original pelo primeiro novo jogo
+                        jogos[-1] = novo_jogo_1
+                        # Adicione o segundo novo jogo
+                        jogos.append(novo_jogo_2)
+
             else:
-                random.shuffle(players)
-                for j in range(0, len(players), 2):
-                    if j + 1 < len(players):
-                        id_competidor_1 = players[j].id
-                        id_competidor_2 = players[j + 1].id
+                # Para menos de 4 jogadores, aplica uma lógica diferente
+                for j in range(0, len(players_modalidade), 2):
+                    if j + 1 < len(players_modalidade):
+                        id_competidor_1 = players_modalidade[j].id
+                        id_competidor_2 = players_modalidade[j + 1].id
 
                         jogo = Jogos(id_competidor_1=id_competidor_1,
-                                 id_competidor_2=id_competidor_2,
-                                 modalidade=modalidade,
-                                 categoria=categoria_obj,
-                                 fase=fase,
-                                 jogo_order=j+1)
-                        rodada[f'jogo_{j+1}'] = jogo
-                        jogos.append(rodada[f'jogo_{j+1}'])
-        
+                                     id_competidor_2=id_competidor_2,
+                                     modalidade=modalidade,
+                                     categoria=categoria_obj,
+                                     fase=fase,
+                                     jogo_order=j + 1)
+                        rodada[f'jogo_{j + 1}'] = jogo
+                        jogos.append(rodada[f'jogo_{j + 1}'])
+
             if jogos:
                 chaves[FASE] = fase
-                if genero == FEMININO:
-                    chaves[GENERO] = 'Feminino'
-                else:
-                    chaves[GENERO] = 'Masculino'
-            
+                chaves[GENERO] = 'Feminino' if genero == FEMININO else 'Masculino'
                 chaves[f'{modalidade.nome}'] = []
 
-            players.insert(1, players.pop())
-
-        for jogo in jogos:
-            if jogo.id_competidor_1 is None or jogo.id_competidor_2 is None:
-                jogos_com_nulo.append(jogo)
-                print(jogo)
-
-        jogos_ok = [jogo for jogo in jogos if jogo not in jogos_com_nulo]
-
-        jogos_ok.extend(jogos_com_nulo)
-
-        if not jogos_ok:
-            return (chaves,jogos_ok)
-
-        if len(jogos_ok) == 3:
-            primeiro_jogo = jogos_ok[0]
-            for jogo in jogos_ok:
-                if jogo.id_competidor_1 is None:
-                    if jogo.id_competidor_2 != primeiro_jogo.id_competidor_1:
-                        jogo.id_competidor_1 = primeiro_jogo.id_competidor_1
-                    else:
-                        jogo.id_competidor_1 = primeiro_jogo.id_competidor_2
-                if jogo.id_competidor_2 is None:
-                    if jogo.id_competidor_1 != primeiro_jogo.id_competidor_2:
-                        jogo.id_competidor_2 = primeiro_jogo.id_competidor_2
-                    else:
-                        jogo.id_competidor_2 = primeiro_jogo.id_competidor_1
-
-        return (chaves, jogos_ok)
+        return (chaves, jogos)

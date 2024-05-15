@@ -12,7 +12,6 @@ def get_data_to_insert():
         data_frame = pd.DataFrame(competidores)
         return data_frame
 
-
 def get_data_categoria():
     categorias = pd.read_csv('categorias.csv')
     data_frame = pd.DataFrame(categorias)
@@ -36,7 +35,7 @@ class InsertDataService:
     @staticmethod
     async def insert_modalidade():
         async with async_session() as session:
-            modalidades=["siriuna", "benguela", "são bento grande"]
+            modalidades=["benguela", "siriuna", "sao_bento_grande"]
             modalidades_to_save = []
             for modalidade in modalidades:
                 modalidade_save = Modalidades(nome=modalidade)
